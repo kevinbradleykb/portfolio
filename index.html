@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Bradley - Security Engineer & Data Analyst</title>
+    <meta name="description" content="Kevin Bradley - Security Engineer at Group1001, Yale graduate with expertise in cybersecurity, data analysis, and financial technology.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-bg: #0f0f23;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --accent-blue: #00d4ff;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #f472b6;
+            --section-padding: 8rem 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Advanced Background Effects */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--dark-bg);
+        }
+
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.7;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-gradient);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-gradient);
+            top: 60%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-gradient);
+            bottom: 20%;
+            left: 40%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(15px) rotate(240deg); }
+        }
+
+        /* Grid Pattern Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform: rotateY(-5deg) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .profile-card:hover::before {
+            left: 100%;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .profile-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-card:hover .profile-avatar::after {
+            opacity: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 45%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            z-index: 1;
+        }
+
+        .company {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .role {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .duration {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-purple);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+        }
+
+        .university {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .degree {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .gpa {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .achievements-section {
+            margin-top: 1rem;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.2rem 0.5rem 0.2rem 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Advanced Performance Optimizations */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Improved Focus States for Accessibility */
+        a:focus-visible, button:focus-visible, .nav-links a:focus-visible {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* Enhanced Micro-Interactions */
+        .skill-tag {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-tag:hover::before {
+            left: 100%;
+        }
+
+        /* Advanced Glassmorphism Effects */
+        .timeline-content, .skill-category, .education-card, .contact {
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Floating Animation for CTA Buttons */
+        @keyframes float-button {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .btn-primary, .btn-secondary {
+            animation: float-button 3s ease-in-out infinite;
+        }
+
+        .btn-secondary {
+            animation-delay: 1.5s;
+        }
+
+        /* Progressive Enhancement for Scroll Effects */
+        @supports (scroll-behavior: smooth) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* Enhanced Card Hover Effects */
+        .timeline-content:hover, .skill-category:hover, .education-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.25);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Improved Loading States */
+        .hero-text h1 {
+            animation: slide-up 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        @keyframes slide-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Navigation Interactions */
+        .nav-links a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 80%;
+        }
+
+        /* Advanced Typography Improvements */
+        h1, h2, h3, h4, h5, h6 {
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "kern" 1, "liga" 1;
+        }
+
+        /* Improved Selection Colors */
+        ::selection {
+            background: rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        /* Enhanced Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-gradient);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            nav {
+                top: 1rem;
+                left: 1rem;
+                right: 1rem;
+                transform: none;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 40px !important;
+                margin-bottom: 3rem;
+            }
+
+            .timeline-item .timeline-content::before {
+                left: -30px !important;
+                border-right-color: rgba(255, 255, 255, 0.1) !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-icon {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Kevin Bradley</h1>
+                    <p class="subtitle">Security Engineer & Data Analyst</p>
+                    <p class="description">
+                        Currently excelling in Group1001's technology rotational program, combining cybersecurity expertise with data-driven insights. Yale graduate with proven experience in financial technology, threat intelligence, and strategic business solutions.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">3.55</span>
+                            <span class="stat-label">GPA Yale</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">D1</span>
+                            <span class="stat-label">NCAA Athlete</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#experience" class="btn-primary">
+                            <span>View Experience</span>
+                            <span>→</span>
+                        </a>
+                        <a href="mailto:kevinm.bradley1@gmail.com" class="btn-secondary">
+                            <span>Get In Touch</span>
+                            <span>✉</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <div class="profile-avatar">🛡️</div>
+                        <h3>Security Engineer</h3>
+                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Group1001 Tech Rotational Program</p>
+                        <div style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-blue);">
+                            Cybersecurity • Data Analysis • FinTech
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">
+                    A progression through cybersecurity, financial technology, and data analysis roles at leading organizations
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">G1</div>
+                    <div class="timeline-content">
+                        <div class="company">Group1001</div>
+                        <h3 class="role">Security Engineer - Technology Rotational Program</h3>
+                        <div class="duration">Jan 2024 - Present</div>
+                        <ul class="achievements">
+                            <li>Developing comprehensive cybersecurity solutions across multiple business units in a structured rotational program</li>
+                            <li>Implementing security protocols and risk assessment frameworks for enterprise-level applications</li>
+                            <li>Collaborating with cross-functional teams to integrate security best practices into development workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">HK</div>
+                    <div class="timeline-content">
+                        <div class="company">Horizon Kinetics</div>
+                        <h3 class="role">Equity Research Intern</h3>
+                        <div class="duration">Sep 2023 - Dec 2023</div>
+                        <ul class="achievements">
+                            <li>Authored in-house documentation for INFL and BLOC investment portfolios through comprehensive equity research</li>
+                            <li>Analyzed financial statements (10-Q's, 10-K's, DEF 14As) and synthesized key insights from earnings meetings</li>
+                            <li>Built a comprehensive 'Research Library' on WordPress, creating 75+ optimized subpages for improved client experience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">CB</div>
+                    <div class="timeline-content">
+                        <div class="company">ConBio (康奥科技)</div>
+                        <h3 class="role">Business Strategy and Technology Intern</h3>
+                        <div class="duration">Jun 2023 - Aug 2023 • Shanghai, China</div>
+                        <ul class="achievements">
+                            <li>Led website redesign initiative using Figma, creating wireframes that enhanced UX for global expansion strategy</li>
+                            <li>Adapted PowerPoint presentations for FDA approval, implementing U.S. corporate standards and presentation techniques</li>
+                            <li>Contributed to successful FDA approval and company's acquisition of Massachusetts manufacturing facility</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">UB</div>
+                    <div class="timeline-content">
+                        <div class="company">UBS Financial Services</div>
+                        <h3 class="role">Technology Intern - Cyber Threat Intelligence Team</h3>
+                        <div class="duration">Jun 2022 - Aug 2022</div>
+                        <ul class="achievements">
+                            <li>Developed division-specific cyber attack contingency plans for the CTI team, focusing on risk management and impact minimization</li>
+                            <li>Led a 7-person intern team using agile methodology to design an intranet extension for on-site locker reservations</li>
+                            <li>Gained deep expertise in cybercrime trends, threat analysis, and enterprise security protocols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">UB</div>
+                    <div class="timeline-content">
+                        <div class="company">UBS Financial Services</div>
+                        <h3 class="role">Technology Intern - WMA IT Team</h3>
+                        <div class="duration">Jun 2021 - Aug 2021</div>
+                        <ul class="achievements">
+                            <li>Managed Tableau dashboards tracking device issues across Wealth Management America division</li>
+                            <li>Delivered daily analytics reports identifying device trends and security anomalies</li>
+                            <li>Collaborated on COVID-19 Return-to-Office strategy using IoT sensors for occupancy monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">
+                    A comprehensive toolkit spanning cybersecurity, data analysis, and modern development technologies
+                </p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>
+                        <div class="skill-icon">🛡️</div>
+                        Cybersecurity
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Threat Intelligence</span>
+                        <span class="skill-tag">Risk Assessment</span>
+                        <span class="skill-tag">Security Protocols</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                        <span class="skill-tag">Network Security</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3>
+                        <div class="skill-icon">📊</div>
+                        Data Analysis
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">R Programming</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+               <div class="skill-category fade-in">
+                   <h3>
+                       <div class="skill-icon">💼</div>
+                       Financial Technology
+                   </h3>
+                   <div class="skill-tags">
+                       <span class="skill-tag">Equity Research</span>
+                       <span class="skill-tag">Financial Modeling</span>
+                       <span class="skill-tag">Portfolio Analysis</span>
+                       <span class="skill-tag">Risk Management</span>
+                       <span class="skill-tag">Regulatory Compliance</span>
+                       <span class="skill-tag">Market Analysis</span>
+                   </div>
+               </div>
+
+               <div class="skill-category fade-in">
+                   <h3>
+                       <div class="skill-icon">🔧</div>
+                       Technical Tools
+                   </h3>
+                   <div class="skill-tags">
+                       <span class="skill-tag">Microsoft Office Suite</span>
+                       <span class="skill-tag">Figma</span>
+                       <span class="skill-tag">WordPress</span>
+                       <span class="skill-tag">Git</span>
+                       <span class="skill-tag">Agile Methodology</span>
+                       <span class="skill-tag">PowerPoint</span>
+                   </div>
+               </div>
+
+               <div class="skill-category fade-in">
+                   <h3>
+                       <div class="skill-icon">🌟</div>
+                       Leadership & Soft Skills
+                   </h3>
+                   <div class="skill-tags">
+                       <span class="skill-tag">Project Management</span>
+                       <span class="skill-tag">Team Leadership</span>
+                       <span class="skill-tag">Strategic Planning</span>
+                       <span class="skill-tag">Cross-cultural Communication</span>
+                       <span class="skill-tag">Problem Solving</span>
+                       <span class="skill-tag">Time Management</span>
+                   </div>
+               </div>
+
+               <div class="skill-category fade-in">
+                   <h3>
+                       <div class="skill-icon">🏆</div>
+                       Certifications
+                   </h3>
+                   <div class="skill-tags">
+                       <span class="skill-tag">IBM Python for Data Science</span>
+                       <span class="skill-tag">IBM AI & Development</span>
+                       <span class="skill-tag">IBM Databases and SQL</span>
+                       <span class="skill-tag">NCAA Scholar All-American</span>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Education Section -->
+   <section id="education">
+       <div class="container">
+           <div class="section-header fade-in">
+               <h2 class="section-title">Education & Achievements</h2>
+               <p class="section-subtitle">
+                   Academic excellence combined with elite athletic performance and continuous professional development
+               </p>
+           </div>
+
+           <div class="education-grid">
+               <div class="education-card fade-in">
+                   <div class="university">Yale University</div>
+                   <div class="degree">Bachelor of Arts - Sociology, Public Health</div>
+                   <div class="gpa">GPA: 3.55/4.0 • Graduated: August 2024</div>
+                   
+                   <div class="achievements-section">
+                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Relevant Coursework:</h4>
+                       <div class="skill-tags">
+                           <span class="skill-tag">Introductory Statistics</span>
+                           <span class="skill-tag">Data Analysis & Exploration (R)</span>
+                           <span class="skill-tag">Microeconomics</span>
+                           <span class="skill-tag">Calculus</span>
+                       </div>
+                       
+                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Athletic Achievement:</h4>
+                       <span class="achievement-badge">Division I Varsity Swim & Dive Team</span>
+                       <span class="achievement-badge">5-Year Student-Athlete</span>
+                   </div>
+               </div>
+
+               <div class="education-card fade-in">
+                   <div class="university">University of Michigan</div>
+                   <div class="degree">Student-Athlete Program</div>
+                   <div class="gpa">September 2019 - April 2021</div>
+                   
+                   <div class="achievements-section">
+                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Elite Athletic Honors:</h4>
+                       <span class="achievement-badge">NCAA All-American</span>
+                       <span class="achievement-badge">NCAA Scholar All-American</span>
+                       
+                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Key Skills Developed:</h4>
+                       <div class="skill-tags">
+                           <span class="skill-tag">Elite Performance Under Pressure</span>
+                           <span class="skill-tag">Advanced Time Management</span>
+                           <span class="skill-tag">Team Leadership</span>
+                           <span class="skill-tag">Goal-Oriented Mindset</span>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Additional Interests Section -->
+           <div class="education-card fade-in" style="margin-top: 2rem;">
+               <div class="university">Personal Interests & Continuous Learning</div>
+               <div class="degree">Balanced Professional and Personal Development</div>
+               
+               <div class="achievements-section">
+                   <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Current Interests:</h4>
+                   <div class="skill-tags">
+                       <span class="skill-tag">Hiking & Outdoor Sports</span>
+                       <span class="skill-tag">Technical Reading</span>
+                       <span class="skill-tag">Creative Writing</span>
+                       <span class="skill-tag">Drawing & Design</span>
+                       <span class="skill-tag">Continuous Learning</span>
+                       <span class="skill-tag">Technology Trends</span>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact">
+       <div class="container">
+           <div class="contact fade-in">
+               <h2 class="section-title">Let's Connect</h2>
+               <p class="section-subtitle">
+                   Ready to discuss cybersecurity, data analysis, or potential opportunities? I'd love to hear from you.
+               </p>
+
+               <div class="contact-links">
+                   <a href="mailto:kevinm.bradley1@gmail.com" class="contact-link">
+                       <div class="contact-icon">✉️</div>
+                       <span>kevinm.bradley1@gmail.com</span>
+                   </a>
+                   <a href="https://www.linkedin.com/in/kevinmichaelbradley" class="contact-link" target="_blank" rel="noopener noreferrer">
+                       <div class="contact-icon">💼</div>
+                       <span>LinkedIn Profile</span>
+                   </a>
+                   <a href="tel:+12039393358" class="contact-link">
+                       <div class="contact-icon">📱</div>
+                       <span>(203) 939-3358</span>
+                   </a>
+                   <a href="#" class="contact-link" onclick="downloadResume()">
+                       <div class="contact-icon">📄</div>
+                       <span>Download Resume</span>
+                   </a>
+               </div>
+
+               <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                   <h4 style="margin-bottom: 1rem; color: var(--accent-blue);">Currently Based In:</h4>
+                   <p style="color: var(--text-muted); margin-bottom: 0.5rem;">📍 Norwalk, CT 06855</p>
+                   <p style="color: var(--text-muted); font-size: 0.9rem;">Open to opportunities in the Greater New York area and remote positions</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Footer -->
+   <footer>
+       <div class="container">
+           <p>&copy; 2025 Kevin Bradley. Built with modern web technologies and deployed on GitHub Pages.</p>
+           <p style="margin-top: 0.5rem; font-size: 0.9rem;">Security Engineer | Data Analyst | Yale Graduate | NCAA All-American</p>
+       </div>
+   </footer>
+
+   <script>
+       // Smooth scrolling for navigation
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               const target = document.querySelector(this.getAttribute('href'));
+               if (target) {
+                   target.scrollIntoView({
+                       behavior: 'smooth',
+                       block: 'start'
+                   });
+               }
+           });
+       });
+
+       // Navigation active state
+       function updateActiveNav() {
+           const sections = document.querySelectorAll('section[id]');
+           const navLinks = document.querySelectorAll('.nav-links a');
+           
+           let current = '';
+           sections.forEach(section => {
+               const sectionTop = section.getBoundingClientRect().top;
+               if (sectionTop <= 100) {
+                   current = section.getAttribute('id');
+               }
+           });
+
+           navLinks.forEach(link => {
+               link.classList.remove('active');
+               if (link.getAttribute('href') === `#${current}`) {
+                   link.classList.add('active');
+               }
+           });
+       }
+
+       // Fade in animation on scroll
+       function animateOnScroll() {
+           const elements = document.querySelectorAll('.fade-in, .timeline-item');
+           
+           elements.forEach(element => {
+               const elementTop = element.getBoundingClientRect().top;
+               const elementVisible = 150;
+               
+               if (elementTop < window.innerHeight - elementVisible) {
+                   element.classList.add('visible');
+               }
+           });
+       }
+
+       // Navigation background on scroll
+       function updateNavBackground() {
+           const nav = document.querySelector('nav');
+           const scrolled = window.pageYOffset;
+           
+           if (scrolled > 100) {
+               nav.style.background = 'rgba(255, 255, 255, 0.08)';
+               nav.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+           } else {
+               nav.style.background = 'rgba(255, 255, 255, 0.05)';
+               nav.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+           }
+       }
+
+       // Parallax effect for background orbs
+       function updateParallax() {
+           const scrolled = window.pageYOffset;
+           const orbs = document.querySelectorAll('.gradient-orb');
+           
+           orbs.forEach((orb, index) => {
+               const speed = 0.5 + (index * 0.1);
+               orb.style.transform = `translateY(${scrolled * speed}px)`;
+           });
+       }
+
+       // Enhanced hover effects for cards
+       function initCardEffects() {
+           const cards = document.querySelectorAll('.timeline-content, .skill-category, .education-card');
+           
+           cards.forEach(card => {
+               card.addEventListener('mouseenter', function() {
+                   this.style.transform = 'translateY(-8px) scale(1.02)';
+                   this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+               });
+               
+               card.addEventListener('mouseleave', function() {
+                   this.style.transform = 'translateY(0) scale(1)';
+                   this.style.boxShadow = 'none';
+               });
+           });
+       }
+
+       // Typewriter effect for hero subtitle
+       function typewriterEffect() {
+           const subtitle = document.querySelector('.hero-text .subtitle');
+           const text = subtitle.textContent;
+           subtitle.textContent = '';
+           
+           let i = 0;
+           function type() {
+               if (i < text.length) {
+                   subtitle.textContent += text.charAt(i);
+                   i++;
+                   setTimeout(type, 100);
+               }
+           }
+           
+           setTimeout(type, 1000);
+       }
+
+       // Resume download function
+       function downloadResume() {
+           // Since we can't host actual files on GitHub Pages in this context,
+           // this would typically link to a PDF hosted in your repository
+           alert('Resume download would be available when you upload your PDF resume to the GitHub repository and link it here.');
+       }
+
+       // Copy email to clipboard
+       function copyEmail() {
+           navigator.clipboard.writeText('kevinm.bradley1@gmail.com').then(() => {
+               const notification = document.createElement('div');
+               notification.textContent = 'Email copied to clipboard!';
+               notification.style.cssText = `
+                   position: fixed;
+                   top: 20px;
+                   right: 20px;
+                   background: var(--accent-gradient);
+                   color: white;
+                   padding: 1rem 2rem;
+                   border-radius: 10px;
+                   z-index: 10000;
+                   animation: slideIn 0.3s ease;
+               `;
+               document.body.appendChild(notification);
+               setTimeout(() => notification.remove(), 3000);
+           });
+       }
+
+       // Add click handler for email link
+       document.addEventListener('DOMContentLoaded', function() {
+           const emailLink = document.querySelector('a[href^="mailto"]');
+           emailLink.addEventListener('click', function(e) {
+               e.preventDefault();
+               copyEmail();
+               // Still open email client
+               setTimeout(() => window.location.href = this.href, 1000);
+           });
+       });
+
+       // Performance optimization: Throttle scroll events
+       function throttle(func, limit) {
+           let inThrottle;
+           return function() {
+               const args = arguments;
+               const context = this;
+               if (!inThrottle) {
+                   func.apply(context, args);
+                   inThrottle = true;
+                   setTimeout(() => inThrottle = false, limit);
+               }
+           }
+       }
+
+       // Enhanced loading animation
+       function initLoadingSequence() {
+           const elements = document.querySelectorAll('.hero-text > *:not(h1)');
+           elements.forEach((element, index) => {
+               element.style.opacity = '0';
+               element.style.transform = 'translateY(30px)';
+               element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
+               
+               setTimeout(() => {
+                   element.style.opacity = '1';
+                   element.style.transform = 'translateY(0)';
+               }, 300 + (index * 150));
+           });
+       }
+
+       // Advanced intersection observer for better performance
+       function initIntersectionObserver() {
+           const options = {
+               threshold: 0.1,
+               rootMargin: '0px 0px -50px 0px'
+           };
+
+           const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('visible');
+                   }
+               });
+           }, options);
+
+           document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
+               observer.observe(el);
+           });
+       }
+
+       // Enhanced keyboard navigation
+       function initKeyboardNavigation() {
+           document.addEventListener('keydown', function(e) {
+               if (e.key === 'Tab') {
+                   document.body.classList.add('keyboard-navigation');
+               }
+           });
+
+           document.addEventListener('mousedown', function() {
+               document.body.classList.remove('keyboard-navigation');
+           });
+       }
+
+       // Preloader animation
+       function initPreloader() {
+           const preloader = document.createElement('div');
+           preloader.innerHTML = `
+               <div style="
+                   position: fixed;
+                   top: 0;
+                   left: 0;
+                   width: 100%;
+                   height: 100%;
+                   background: var(--dark-bg);
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   z-index: 10000;
+                   opacity: 1;
+                   transition: opacity 0.5s ease;
+               ">
+                   <div style="
+                       width: 50px;
+                       height: 50px;
+                       border: 3px solid rgba(255,255,255,0.1);
+                       border-top: 3px solid var(--accent-blue);
+                       border-radius: 50%;
+                       animation: spin 1s linear infinite;
+                   "></div>
+               </div>
+           `;
+           document.body.appendChild(preloader);
+
+           window.addEventListener('load', () => {
+               setTimeout(() => {
+                   preloader.style.opacity = '0';
+                   setTimeout(() => preloader.remove(), 500);
+               }, 800);
+           });
+       }
+
+       // Enhanced cursor trail effect (optional - can be disabled for performance)
+       function initCursorTrail() {
+           if (window.innerWidth > 768) { // Only on desktop
+               const cursor = document.createElement('div');
+               cursor.style.cssText = `
+                   position: fixed;
+                   width: 20px;
+                   height: 20px;
+                   background: var(--accent-gradient);
+                   border-radius: 50%;
+                   pointer-events: none;
+                   z-index: 9999;
+                   opacity: 0.7;
+                   transform: translate(-50%, -50%);
+                   transition: all 0.1s ease;
+                   mix-blend-mode: difference;
+               `;
+               document.body.appendChild(cursor);
+
+               document.addEventListener('mousemove', (e) => {
+                   cursor.style.left = e.clientX + 'px';
+                   cursor.style.top = e.clientY + 'px';
+               });
+
+               document.addEventListener('mousedown', () => {
+                   cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+               });
+
+               document.addEventListener('mouseup', () => {
+                   cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+               });
+           }
+       }
+
+       // Initialize all functions
+       document.addEventListener('DOMContentLoaded', function() {
+           initPreloader();
+           initLoadingSequence();
+           initIntersectionObserver();
+           initKeyboardNavigation();
+           // initCursorTrail(); // Uncomment for cursor trail effect
+           
+           setTimeout(() => {
+               animateOnScroll();
+               updateActiveNav();
+               updateNavBackground();
+               initCardEffects();
+               typewriterEffect();
+           }, 1000);
+       });
+
+       // Event listeners with throttling for better performance
+       window.addEventListener('scroll', throttle(function() {
+           animateOnScroll();
+           updateActiveNav();
+           updateNavBackground();
+           updateParallax();
+       }, 16)); // 60fps throttling
+
+       // Add CSS animation keyframes
+       const style = document.createElement('style');
+       style.textContent = `
+           @keyframes slideIn {
+               from { transform: translateX(100%); opacity: 0; }
+               to { transform: translateX(0); opacity: 1; }
+           }
+           
+           @keyframes spin {
+               from { transform: rotate(0deg); }
+               to { transform: rotate(360deg); }
+           }
+           
+           /* Keyboard navigation enhancement */
+           .keyboard-navigation *:focus-visible {
+               outline: 2px solid var(--accent-blue) !important;
+               outline-offset: 2px !important;
+           }
+       `;
+       document.head.appendChild(style);
+   </script>
+</body>
+</html>
