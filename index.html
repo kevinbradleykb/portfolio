@@ -809,27 +809,13 @@
             }
         }
 
-        /* Enhanced Navigation Interactions */
+        /* Consistent Navigation Highlight System */
         .nav-links a {
             position: relative;
             overflow: hidden;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gradient);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 80%;
-        }
+        /* Remove conflicting underline - use only background highlighting */
 
         /* Advanced Typography Improvements */
         h1, h2, h3, h4, h5, h6 {
@@ -866,6 +852,22 @@
             background: var(--primary-gradient);
         }
 
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            nav {
+                padding: 0.875rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.625rem 1rem;
+                font-size: 0.825rem;
+            }
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             :root {
@@ -881,15 +883,32 @@
                 left: 1rem;
                 right: 1rem;
                 transform: none;
+                width: auto;
+                padding: 0.75rem 1.5rem;
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 0.5rem;
+                justify-content: center;
             }
 
             .nav-links a {
-                padding: 0.4rem 0.8rem;
+                padding: 0.5rem 0.75rem;
                 font-size: 0.8rem;
+                border-radius: 8px;
+                white-space: nowrap;
+            }
+
+            /* Ensure active/hover states work on mobile */
+            .nav-links a:hover {
+                background: rgba(59, 130, 246, 0.15);
+                transform: none; /* Remove translateY on mobile */
+            }
+
+            .nav-links a.active {
+                background: var(--primary-gradient);
+                color: white;
+                box-shadow: var(--shadow-sm);
             }
 
             .hero-content {
@@ -936,6 +955,40 @@
             .contact-links {
                 flex-direction: column;
                 align-items: center;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-links {
+                gap: 0.25rem;
+            }
+
+            .nav-links a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+                min-width: auto;
+            }
+
+            /* Stack navigation vertically on very small screens */
+            @media (max-width: 360px) {
+                .nav-links {
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+
+                .nav-links a {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                nav {
+                    padding: 0.75rem;
+                }
             }
         }
     </style>
