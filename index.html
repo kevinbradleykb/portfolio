@@ -68,7 +68,7 @@
             padding: 0 2rem;
         }
 
-        /* Advanced Background Effects */
+        /* Advanced Background Effects with Matrix Rain */
         .bg-effects {
             position: fixed;
             top: 0;
@@ -77,50 +77,80 @@
             height: 100%;
             z-index: -2;
             background: var(--dark-bg);
+            overflow: hidden;
+        }
+
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .matrix-column {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            animation: matrix-fall linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes matrix-fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         .gradient-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.7;
-            animation: float 20s ease-in-out infinite;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 25s ease-in-out infinite;
         }
 
         .orb-1 {
-            width: 350px;
-            height: 350px;
+            width: 400px;
+            height: 400px;
             background: var(--primary-gradient);
-            top: 15%;
-            left: 10%;
+            top: 10%;
+            left: 5%;
             animation-delay: 0s;
-            opacity: 0.4;
         }
 
         .orb-2 {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             background: var(--secondary-gradient);
-            top: 65%;
-            right: 15%;
-            animation-delay: -10s;
-            opacity: 0.3;
+            top: 60%;
+            right: 10%;
+            animation-delay: -12s;
         }
 
         .orb-3 {
-            width: 220px;
-            height: 220px;
+            width: 260px;
+            height: 260px;
             background: var(--accent-gradient);
-            bottom: 25%;
-            left: 45%;
-            animation-delay: -5s;
-            opacity: 0.35;
+            bottom: 20%;
+            left: 40%;
+            animation-delay: -7s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(15px) rotate(240deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-40px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(20px) rotate(240deg) scale(0.9); }
         }
 
         /* Grid Pattern Overlay */
@@ -186,45 +216,313 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* Hero Section */
+        /* Creative Landing Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
+            text-align: center;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            max-width: 800px;
             width: 100%;
+            z-index: 2;
         }
 
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
+        /* Animated Greeting */
+        .hero-greeting {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
             margin-bottom: 1rem;
-            background: var(--primary-gradient);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00ff41 0%, #0091ff 50%, #ff0080 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1s forwards, glow 2s ease-in-out 2s infinite alternate;
         }
 
-        .hero-text .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 400;
+        .hero-welcome {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
         }
 
-        .hero-text .description {
-            font-size: 1.1rem;
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
             color: var(--text-muted);
             margin-bottom: 3rem;
-            line-height: 1.7;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 1s ease 2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 145, 255, 0.3); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(255, 0, 128, 0.4); }
+        }
+
+        /* About Section Styles */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .about-content .about-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-content .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .highlight-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .personal-interests {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .personal-interests h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .personal-interests p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .interest-tag {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .interest-tag:hover {
+            background: rgba(0, 255, 65, 0.2);
+            border-color: #00ff41;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* Projects Section Styles */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card.new-project {
+            border: 2px dashed var(--accent-blue);
+            text-align: center;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-gradient);
+            border-radius: 15px;
+        }
+
+        .project-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-weight: 500;
+        }
+
+        .project-upload {
+            border-top: 1px solid var(--card-border);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        .upload-btn {
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(5, 150, 105, 0.4);
+        }
+
+        .upload-btn.primary {
+            background: var(--primary-gradient);
+        }
+
+        .upload-status {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         .hero-stats {
@@ -956,6 +1254,70 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            /* About Section Mobile */
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .personal-interests {
+                padding: 2rem;
+            }
+
+            .interest-tags {
+                gap: 0.5rem;
+            }
+
+            .interest-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            /* Projects Section Mobile */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .project-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+
+            .project-features {
+                justify-content: center;
+            }
+
+            /* Hero Mobile Updates */
+            .hero-greeting {
+                font-size: 1.2rem;
+            }
+
+            .hero-name {
+                font-size: 3rem;
+            }
+
+            .hero-welcome {
+                font-size: 1.8rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
         }
 
         /* Small Mobile Devices */
@@ -996,6 +1358,7 @@
 <body>
     <!-- Background Effects -->
     <div class="bg-effects">
+        <div class="matrix-rain" id="matrix-rain"></div>
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
         <div class="gradient-orb orb-3"></div>
@@ -1006,59 +1369,206 @@
     <nav>
         <ul class="nav-links">
             <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Creative Landing Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Kevin Bradley</h1>
-                    <p class="subtitle">Security Engineer & Data Analyst</p>
-                    <p class="description">
-                        Currently excelling in Group1001's technology rotational program, combining cybersecurity expertise with data-driven insights. Yale graduate with proven experience in financial technology, threat intelligence, and strategic business solutions.
-                    </p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">3.55</span>
-                            <span class="stat-label">GPA</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">4+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">D1</span>
-                            <span class="stat-label">NCAA Athlete</span>
-                        </div>
-                    </div>
+                <p class="hero-greeting">Hi, I'm</p>
+                <h1 class="hero-name">Kevin</h1>
+                <p class="hero-welcome">Welcome to my portfolio</p>
+                <p class="hero-tagline">
+                    Security Engineer crafting digital solutions at the intersection of cybersecurity, data analysis, and innovation
+                </p>
+                
+                <div class="cta-buttons" style="opacity: 0; animation: fadeInUp 1s ease 2.5s forwards;">
+                    <a href="#about" class="btn-primary">
+                        <span>Discover My Story</span>
+                        <span>↓</span>
+                    </a>
+                    <a href="#projects" class="btn-secondary">
+                        <span>View My Work</span>
+                        <span>🚀</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="cta-buttons">
-                        <a href="#experience" class="btn-primary">
-                            <span>View Experience</span>
-                            <span>→</span>
-                        </a>
-                        <a href="mailto:kevinm.bradley1@gmail.com" class="btn-secondary">
-                            <span>Get In Touch</span>
-                            <span>✉</span>
-                        </a>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">
+                    The journey from NCAA athlete to cybersecurity professional
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-content fade-in">
+                    <div class="about-text">
+                        <h3>My Story</h3>
+                        <p>
+                            I'm Kevin Bradley, a Security Engineer currently excelling in Group1001's technology rotational program. My journey combines the discipline of elite athletics with the precision of cybersecurity and data analysis.
+                        </p>
+                        <p>
+                            As a Yale graduate and former NCAA All-American swimmer, I bring the same dedication to excellence that drove my athletic achievements into the world of technology. My experience spans financial services at UBS, equity research at Horizon Kinetics, and international business strategy in Shanghai.
+                        </p>
+                        <p>
+                            I'm passionate about leveraging technology to solve complex problems, whether it's developing cybersecurity protocols, analyzing financial data, or creating innovative solutions that bridge the gap between technical complexity and business value.
+                        </p>
                     </div>
                 </div>
 
-                <div class="hero-visual">
-                    <div class="profile-card">
-                        <div class="profile-avatar">🛡️</div>
-                        <h3>Security Engineer</h3>
-                        <p style="color: var(--text-muted); margin-top: 0.5rem;">Group1001 Tech Rotational Program</p>
-                        <div style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-blue);">
-                            Cybersecurity • Data Analysis • FinTech
+                <div class="about-highlights fade-in">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🎓</div>
+                        <h4>Yale Graduate</h4>
+                        <p>BA in Sociology & Public Health with focus on data analysis and research methodology</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🏆</div>
+                        <h4>NCAA All-American</h4>
+                        <p>Elite performance under pressure, time management, and team leadership</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">🛡️</div>
+                        <h4>Cybersecurity Expert</h4>
+                        <p>Threat intelligence, risk assessment, and enterprise security solutions</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">📊</div>
+                        <h4>Data Analyst</h4>
+                        <p>R, Python, SQL, Tableau for insights-driven decision making</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="personal-interests fade-in">
+                <h3>Beyond the Code</h3>
+                <p>When I'm not diving into cybersecurity protocols or analyzing data trends, you'll find me:</p>
+                <div class="interest-tags">
+                    <span class="interest-tag">🥾 Hiking mountain trails</span>
+                    <span class="interest-tag">📚 Reading tech industry insights</span>
+                    <span class="interest-tag">✍️ Creative writing projects</span>
+                    <span class="interest-tag">🎨 Digital design and illustration</span>
+                    <span class="interest-tag">🌟 Exploring emerging technologies</span>
+                    <span class="interest-tag">🏊‍♂️ Swimming and water sports</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">
+                    A showcase of technical solutions and innovative approaches to real-world challenges
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🛡️</div>
+                        <div class="project-title">
+                            <h3>Cybersecurity Risk Framework</h3>
+                            <p class="project-tech">Python • Risk Analysis • Security Protocols</p>
                         </div>
+                    </div>
+                    <p class="project-description">
+                        Developed comprehensive cybersecurity assessment framework for enterprise applications, implementing automated risk scoring and threat detection protocols.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Automated Risk Assessment</span>
+                        <span class="feature-tag">Threat Intelligence Integration</span>
+                        <span class="feature-tag">Real-time Monitoring</span>
+                    </div>
+                    <div class="project-upload">
+                        <button class="upload-btn" onclick="handleProjectUpload('security-framework')">
+                            📁 Upload Project Files
+                        </button>
+                        <p class="upload-status">Ready to showcase detailed documentation</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">📊</div>
+                        <div class="project-title">
+                            <h3>Financial Data Analytics Platform</h3>
+                            <p class="project-tech">R • Python • Tableau • SQL</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Built comprehensive analytics platform for equity research, processing financial statements and earnings data to generate actionable investment insights.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Automated Data Processing</span>
+                        <span class="feature-tag">Interactive Dashboards</span>
+                        <span class="feature-tag">Predictive Modeling</span>
+                    </div>
+                    <div class="project-upload">
+                        <button class="upload-btn" onclick="handleProjectUpload('analytics-platform')">
+                            📁 Upload Project Files
+                        </button>
+                        <p class="upload-status">Ready to showcase portfolio analysis tools</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div class="project-icon">🌐</div>
+                        <div class="project-title">
+                            <h3>UBS Intranet Extension</h3>
+                            <p class="project-tech">JavaScript • UI/UX • Agile Development</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Led 7-person team to design and develop intranet extension for employee locker reservations, improving workplace efficiency and user experience.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Team Leadership</span>
+                        <span class="feature-tag">User-Centered Design</span>
+                        <span class="feature-tag">Agile Methodology</span>
+                    </div>
+                    <div class="project-upload">
+                        <button class="upload-btn" onclick="handleProjectUpload('intranet-extension')">
+                            📁 Upload Project Files
+                        </button>
+                        <p class="upload-status">Ready to showcase team collaboration project</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in new-project">
+                    <div class="project-header">
+                        <div class="project-icon">➕</div>
+                        <div class="project-title">
+                            <h3>Add New Project</h3>
+                            <p class="project-tech">Ready to showcase your latest work</p>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Upload and showcase your latest projects, technical achievements, or innovative solutions. Perfect for continuous portfolio updates.
+                    </p>
+                    <div class="project-upload">
+                        <button class="upload-btn primary" onclick="handleNewProject()">
+                            🚀 Create New Project
+                        </button>
+                        <p class="upload-status">Click to add your next breakthrough project</p>
                     </div>
                 </div>
             </div>
@@ -1654,12 +2164,61 @@
            }
        }
 
+       // Matrix Rain Effect
+       function initMatrixRain() {
+           const matrixContainer = document.getElementById('matrix-rain');
+           const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]()';
+           
+           function createMatrixColumn() {
+               const column = document.createElement('div');
+               column.className = 'matrix-column';
+               column.style.left = Math.random() * window.innerWidth + 'px';
+               column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+               column.style.animationDelay = Math.random() * 2 + 's';
+               
+               let text = '';
+               for (let i = 0; i < Math.floor(Math.random() * 20 + 10); i++) {
+                   text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
+               }
+               column.innerHTML = text;
+               
+               matrixContainer.appendChild(column);
+               
+               setTimeout(() => {
+                   if (column.parentNode) {
+                       column.parentNode.removeChild(column);
+                   }
+               }, 5000);
+           }
+           
+           setInterval(createMatrixColumn, 200);
+       }
+       
+       // Project Upload Functions
+       function handleProjectUpload(projectId) {
+           const messages = {
+               'security-framework': 'Cybersecurity Risk Framework files would be uploaded here. This could include threat assessment reports, risk matrices, and implementation guides.',
+               'analytics-platform': 'Financial Analytics Platform documentation would be uploaded here. This could include data models, dashboard screenshots, and performance metrics.',
+               'intranet-extension': 'UBS Intranet Extension project files would be uploaded here. This could include UI mockups, technical specifications, and team collaboration artifacts.'
+           };
+           
+           alert(messages[projectId] || 'Project files would be uploaded to showcase your technical work and achievements.');
+       }
+       
+       function handleNewProject() {
+           const projectName = prompt('Enter your new project name:');
+           if (projectName) {
+               alert(`Great! "${projectName}" would be added to your portfolio. You could then upload documentation, code samples, screenshots, and detailed project descriptions.`);
+           }
+       }
+
        // Initialize all functions
        document.addEventListener('DOMContentLoaded', function() {
            initPreloader();
            initLoadingSequence();
            initIntersectionObserver();
            initKeyboardNavigation();
+           initMatrixRain();
            // initCursorTrail(); // Uncomment for cursor trail effect
            
            setTimeout(() => {
