@@ -3,49 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin Bradley - Security Engineer & Data Analyst</title>
-    <meta name="description" content="Kevin Bradley - Security Engineer at Group1001, Yale graduate with expertise in cybersecurity, data analysis, and financial technology.">
+    <title>Kevin's Portfolio World - Roblox Style Game</title>
+    <meta name="description" content="Kevin Bradley's Interactive Roblox-Style Portfolio Game - Control your block and explore!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            /* Professional Corporate Color Palette */
-            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            --secondary-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
-            --accent-gradient: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
-            
-            /* Sophisticated Background Colors */
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            
-            /* Professional Text Colors */
-            --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --text-muted: #94a3b8;
-            --text-accent: #3b82f6;
-            
-            /* Corporate Accent Colors */
-            --accent-blue: #3b82f6;
-            --accent-teal: #0891b2;
-            --accent-emerald: #059669;
-            --accent-gray: #64748b;
-            
-            /* Professional Spacing */
-            --section-padding: 6rem 0;
-            --card-padding: 2rem;
-            --border-radius: 16px;
-            
-            /* Corporate Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -53,2211 +17,1085 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.7;
-            font-weight: 400;
-            letter-spacing: -0.01em;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFB6C1 100%);
+            color: #2C3E50;
+            overflow: hidden;
+            cursor: none;
+            user-select: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Advanced Background Effects with Matrix Rain */
-        .bg-effects {
+        /* Roblox-Style Loading Screen */
+        #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: var(--dark-bg);
-            overflow: hidden;
+            background: linear-gradient(45deg, #FF6B35, #F7931E, #FFD23F, #06FFA5, #00D4FF, #7209B7);
+            background-size: 600% 600%;
+            animation: gradientShift 3s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 1s ease;
         }
 
-        /* Matrix Rain Effect */
-        .matrix-rain {
-            position: absolute;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .roblox-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .loading-blocks {
+            display: flex;
+            gap: 10px;
+        }
+
+        .loading-block {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 6px;
+            animation: blockPulse 1.5s ease-in-out infinite;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .loading-block:nth-child(1) { animation-delay: 0s; background: #FF6B35; }
+        .loading-block:nth-child(2) { animation-delay: 0.3s; background: #F7931E; }
+        .loading-block:nth-child(3) { animation-delay: 0.6s; background: #FFD23F; }
+        .loading-block:nth-child(4) { animation-delay: 0.9s; background: #06FFA5; }
+        .loading-block:nth-child(5) { animation-delay: 1.2s; background: #00D4FF; }
+
+        @keyframes blockPulse {
+            0%, 100% { transform: scale(1) rotateY(0deg); }
+            50% { transform: scale(1.3) rotateY(180deg); }
+        }
+
+        .loading-text {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Roblox-Style UI */
+        #game-ui {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
-        }
-
-        .matrix-column {
-            position: absolute;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            color: #00ff41;
-            text-shadow: 0 0 8px #00ff41;
-            animation: matrix-fall linear infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes matrix-fall {
-            0% {
-                transform: translateY(-100vh);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 25s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary-gradient);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 320px;
-            height: 320px;
-            background: var(--secondary-gradient);
-            top: 60%;
-            right: 10%;
-            animation-delay: -12s;
-        }
-
-        .orb-3 {
-            width: 260px;
-            height: 260px;
-            background: var(--accent-gradient);
-            bottom: 20%;
-            left: 40%;
-            animation-delay: -7s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            33% { transform: translateY(-40px) rotate(120deg) scale(1.1); }
-            66% { transform: translateY(20px) rotate(240deg) scale(0.9); }
-        }
-
-        /* Grid Pattern Overlay */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.03;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
             z-index: 1000;
-            background: var(--card-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            padding: 1rem 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            letter-spacing: 0.01em;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: rgba(59, 130, 246, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .nav-links a.active {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Creative Landing Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            width: 100%;
-            z-index: 2;
-        }
-
-        /* Animated Greeting */
-        .hero-greeting {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
             opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
+            transition: opacity 1s ease;
         }
 
-        .hero-name {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #00ff41 0%, #0091ff 50%, #ff0080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1s forwards, glow 2s ease-in-out 2s infinite alternate;
+        #game-ui.visible {
+            opacity: 1;
         }
 
-        .hero-welcome {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-        }
-
-        .hero-tagline {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            opacity: 0;
-            animation: fadeInUp 1s ease 2s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 145, 255, 0.3); }
-            to { text-shadow: 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(255, 0, 128, 0.4); }
-        }
-
-        /* About Section Styles */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-
-        .about-content .about-text h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-content .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .highlight-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .highlight-card h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .highlight-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .personal-interests {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .personal-interests h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .personal-interests p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .interest-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .interest-tag {
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--text-primary);
-            padding: 0.75rem 1.5rem;
+        /* Top UI Bar */
+        .top-bar {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 25px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            transition: all 0.3s ease;
-            font-weight: 500;
+            padding: 15px 30px;
+            pointer-events: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 3px solid #00D4FF;
         }
 
-        .interest-tag:hover {
-            background: rgba(0, 255, 65, 0.2);
-            border-color: #00ff41;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
-        }
-
-        /* Projects Section Styles */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .project-card.new-project {
-            border: 2px dashed var(--accent-blue);
-            text-align: center;
-        }
-
-        .project-header {
+        .player-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-gradient);
-            border-radius: 15px;
-        }
-
-        .project-title h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .project-tech {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .project-description {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-blue);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            font-weight: 500;
-        }
-
-        .project-upload {
-            border-top: 1px solid var(--card-border);
-            padding-top: 1.5rem;
-            text-align: center;
-        }
-
-        .upload-btn {
-            background: var(--secondary-gradient);
+            gap: 20px;
             color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
-        .upload-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(5, 150, 105, 0.4);
-        }
-
-        .upload-btn.primary {
-            background: var(--primary-gradient);
-        }
-
-        .upload-status {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .hero-stats {
+        .player-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            border-radius: 12px;
             display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
             align-items: center;
-            position: relative;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 3px solid #FFD23F;
+            animation: avatarGlow 2s ease-in-out infinite alternate;
         }
 
-        .profile-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transform: rotateY(-5deg) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        @keyframes avatarGlow {
+            from { box-shadow: 0 0 10px #FFD23F; }
+            to { box-shadow: 0 0 25px #FFD23F, 0 0 40px #FFD23F; }
         }
 
-        .profile-card::before {
-            content: '';
+        .player-name {
+            font-size: 1.2rem;
+            color: #00D4FF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .score {
+            background: linear-gradient(45deg, #06FFA5, #00D4FF);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 800;
+            border: 2px solid white;
+        }
+
+        /* Controls Guide */
+        .controls-panel {
             position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            pointer-events: auto;
+            border: 3px solid #7209B7;
+            max-width: 300px;
+        }
+
+        .controls-title {
+            color: #FFD23F;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .key-button {
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            min-width: 40px;
+            text-align: center;
+            border: 2px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Zone Indicators */
+        .zone-indicators {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            pointer-events: auto;
+        }
+
+        .zone-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+        }
+
+        .zone-card:hover {
+            transform: scale(1);
+            border-color: #00D4FF;
+            box-shadow: 0 12px 24px rgba(0,212,255,0.4);
+        }
+
+        .zone-card.active {
+            border-color: #06FFA5;
+            background: rgba(6, 255, 165, 0.1);
+            transform: scale(1.05);
+        }
+
+        .zone-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .zone-name {
+            font-weight: 800;
+            color: #2C3E50;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Game Canvas */
+        #game-canvas {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .profile-card:hover::before {
-            left: 100%;
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin: 0 auto 1.5rem;
-            position: relative;
-        }
-
-        .profile-avatar::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .profile-card:hover .profile-avatar::after {
-            opacity: 1;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
-            letter-spacing: 0.01em;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-            filter: brightness(1.05);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 2px solid var(--card-border);
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.01em;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.05);
-            border-color: var(--accent-blue);
-            color: var(--text-primary);
-            transform: translateY(-1px);
-        }
-
-        /* Sections */
-        section {
-            padding: var(--section-padding);
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            letter-spacing: -0.01em;
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 4rem;
-            width: 45%;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 55%;
-        }
-
-        .timeline-content {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -30px;
-            border-left-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -30px;
-            border-right-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-icon {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
             z-index: 1;
         }
 
-        .company {
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: -0.01em;
-        }
-
-        .role {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-
-        .duration {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .achievements {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .achievements li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .achievements li::before {
-            content: '▶';
+        /* Welcome Modal */
+        .welcome-modal {
             position: absolute;
-            left: 0;
-            color: var(--accent-teal);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            pointer-events: auto;
+            max-width: 500px;
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .skill-category h3 {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: rgba(59, 130, 246, 0.08);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            letter-spacing: 0.01em;
-        }
-
-        .skill-tag:hover {
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--text-primary);
-            border-color: var(--accent-blue);
-            transform: translateY(-1px);
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent-gradient);
-        }
-
-        .university {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .degree {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .gpa {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .achievements-section {
-            margin-top: 1rem;
-        }
-
-        .achievement-badge {
-            display: inline-block;
-            background: var(--secondary-gradient);
+        .welcome-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin: 0.2rem 0.5rem 0.2rem 0;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.5);
         }
 
-        /* Contact Section */
-        .contact {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 4rem 0;
+        .welcome-text {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-weight: 600;
         }
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+        .play-button {
+            background: linear-gradient(45deg, #06FFA5, #00D4FF);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
         }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 1.25rem 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            font-size: 0.875rem;
-            letter-spacing: 0.01em;
-            box-shadow: var(--shadow-sm);
+        .play-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(6,255,165,0.4);
         }
 
-        .contact-link:hover {
-            background: rgba(59, 130, 246, 0.05);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-blue);
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Advanced Performance Optimizations */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Improved Focus States for Accessibility */
-        a:focus-visible, button:focus-visible, .nav-links a:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
-        /* Enhanced Micro-Interactions */
-        .skill-tag {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
+        /* Success Animation */
+        .success-particles {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 9999;
         }
 
-        .skill-tag:hover::before {
-            left: 100%;
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD23F;
+            border-radius: 50%;
+            animation: particleFloat 3s ease-out forwards;
         }
 
-        /* Professional Card Effects */
-        .timeline-content, .skill-category, .education-card, .contact {
-            backdrop-filter: blur(24px) saturate(120%);
-            -webkit-backdrop-filter: blur(24px) saturate(120%);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-lg);
-            background: var(--card-bg);
-        }
-
-        /* Floating Animation for CTA Buttons */
-        @keyframes float-button {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-3px); }
-        }
-
-        .btn-primary, .btn-secondary {
-            animation: float-button 3s ease-in-out infinite;
-        }
-
-        .btn-secondary {
-            animation-delay: 1.5s;
-        }
-
-        /* Progressive Enhancement for Scroll Effects */
-        @supports (scroll-behavior: smooth) {
-            html {
-                scroll-behavior: smooth;
-            }
-        }
-
-        /* Enhanced Card Hover Effects */
-        .timeline-content:hover, .skill-category:hover, .education-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.25);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Improved Loading States */
-        .hero-text h1 {
-            animation: slide-up 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        @keyframes slide-up {
-            to {
+        @keyframes particleFloat {
+            0% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0);
             }
         }
 
-        /* Consistent Navigation Highlight System */
-        .nav-links a {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Remove conflicting underline - use only background highlighting */
-
-        /* Advanced Typography Improvements */
-        h1, h2, h3, h4, h5, h6 {
-            text-rendering: optimizeLegibility;
-            font-feature-settings: "kern" 1, "liga" 1;
-        }
-
-        /* Improved Selection Colors */
-        ::selection {
-            background: rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-
-        ::-moz-selection {
-            background: rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-
-        /* Enhanced Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-gradient);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-gradient);
-        }
-
-        /* Tablet Responsiveness */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            nav {
-                padding: 0.875rem 2rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                padding: 0.625rem 1rem;
-                font-size: 0.825rem;
-            }
-        }
-
-        /* Mobile Responsiveness */
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
-            :root {
-                --section-padding: 4rem 0;
+            .top-bar {
+                top: 10px;
+                padding: 10px 20px;
             }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            nav {
-                top: 1rem;
-                left: 1rem;
-                right: 1rem;
-                transform: none;
-                width: auto;
-                padding: 0.75rem 1.5rem;
-            }
-
-            .nav-links {
-                gap: 0.5rem;
-                justify-content: center;
-            }
-
-            .nav-links a {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.8rem;
-                border-radius: 8px;
-                white-space: nowrap;
-            }
-
-            /* Ensure active/hover states work on mobile */
-            .nav-links a:hover {
-                background: rgba(59, 130, 246, 0.15);
-                transform: none; /* Remove translateY on mobile */
-            }
-
-            .nav-links a.active {
-                background: var(--primary-gradient);
-                color: white;
-                box-shadow: var(--shadow-sm);
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-                gap: 1.5rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 40px !important;
-                margin-bottom: 3rem;
-            }
-
-            .timeline-item .timeline-content::before {
-                left: -30px !important;
-                border-right-color: rgba(255, 255, 255, 0.1) !important;
-                border-left-color: transparent !important;
-            }
-
-            .timeline-icon {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-
-            .skills-grid,
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            /* About Section Mobile */
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-highlights {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .personal-interests {
-                padding: 2rem;
-            }
-
-            .interest-tags {
-                gap: 0.5rem;
-            }
-
-            .interest-tag {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            /* Projects Section Mobile */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .project-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 2rem;
-            }
-
-            .project-features {
-                justify-content: center;
-            }
-
-            /* Hero Mobile Updates */
-            .hero-greeting {
+            
+            .player-avatar {
+                width: 40px;
+                height: 40px;
                 font-size: 1.2rem;
             }
-
-            .hero-name {
-                font-size: 3rem;
+            
+            .controls-panel {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
             }
-
-            .hero-welcome {
-                font-size: 1.8rem;
+            
+            .zone-indicators {
+                right: 10px;
             }
-
-            .hero-tagline {
-                font-size: 1rem;
-                padding: 0 1rem;
+            
+            .zone-card {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .welcome-modal {
+                margin: 20px;
+                padding: 30px 20px;
+                max-width: none;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
             }
         }
 
-        /* Small Mobile Devices */
-        @media (max-width: 480px) {
-            nav {
-                padding: 0.5rem 1rem;
-            }
+        /* Custom Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #FFD23F, #F7931E);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10001;
+            transition: transform 0.1s ease;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(255,210,63,0.6);
+        }
 
-            .nav-links {
-                gap: 0.25rem;
-            }
-
-            .nav-links a {
-                padding: 0.4rem 0.6rem;
-                font-size: 0.75rem;
-                min-width: auto;
-            }
-
-            /* Stack navigation vertically on very small screens */
-            @media (max-width: 360px) {
-                .nav-links {
-                    flex-direction: column;
-                    gap: 0.25rem;
-                }
-
-                .nav-links a {
-                    text-align: center;
-                    width: 100%;
-                }
-
-                nav {
-                    padding: 0.75rem;
-                }
-            }
+        .custom-cursor.clicking {
+            transform: scale(1.5);
+            background: radial-gradient(circle, #06FFA5, #00D4FF);
         }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-effects">
-        <div class="matrix-rain" id="matrix-rain"></div>
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="roblox-logo">KEVIN'S WORLD</div>
+        <div class="loading-blocks">
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+            <div class="loading-block"></div>
+        </div>
+        <div class="loading-text">Loading Portfolio Game...</div>
     </div>
-    <div class="grid-overlay"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Game Canvas -->
+    <canvas id="game-canvas"></canvas>
 
-    <!-- Creative Landing Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <p class="hero-greeting">Hi, I'm</p>
-                <h1 class="hero-name">Kevin</h1>
-                <p class="hero-welcome">Welcome to my portfolio</p>
-                <p class="hero-tagline">
-                    Security Engineer crafting digital solutions at the intersection of cybersecurity, data analysis, and innovation
-                </p>
+    <!-- Game UI -->
+    <div id="game-ui">
+        <!-- Welcome Modal -->
+        <div class="welcome-modal" id="welcomeModal">
+            <h1 class="welcome-title">🎮 Welcome to Kevin's World!</h1>
+            <p class="welcome-text">
+                Control your block with WASD keys and flip into different portfolio zones! 
+                Each zone will take you to explore Kevin's professional journey. 
+                Ready to play?
+            </p>
+            <button class="play-button" onclick="startGame()">🚀 START PLAYING!</button>
+        </div>
+
+        <!-- Top UI Bar -->
+        <div class="top-bar">
+            <div class="player-info">
+                <div class="player-avatar">🎯</div>
+                <div class="player-name">Kevin Bradley</div>
+                <div class="score">Portfolio Explorer</div>
+            </div>
+        </div>
+
+        <!-- Zone Indicators -->
+        <div class="zone-indicators">
+            <div class="zone-card" data-zone="about">
+                <div class="zone-icon">👨‍💻</div>
+                <div class="zone-name">About Me</div>
+            </div>
+            <div class="zone-card" data-zone="experience">
+                <div class="zone-icon">💼</div>
+                <div class="zone-name">Experience</div>
+            </div>
+            <div class="zone-card" data-zone="projects">
+                <div class="zone-icon">🚀</div>
+                <div class="zone-name">Projects</div>
+            </div>
+            <div class="zone-card" data-zone="skills">
+                <div class="zone-icon">⚡</div>
+                <div class="zone-name">Skills</div>
+            </div>
+            <div class="zone-card" data-zone="contact">
+                <div class="zone-icon">📞</div>
+                <div class="zone-name">Contact</div>
+            </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <div class="controls-title">🎮 Game Controls</div>
+            <div class="control-item">
+                <div class="key-button">W</div>
+                <span>Move Forward</span>
+            </div>
+            <div class="control-item">
+                <div class="key-button">A</div>
+                <span>Move Left</span>
+            </div>
+            <div class="control-item">
+                <div class="key-button">S</div>
+                <span>Move Back</span>
+            </div>
+            <div class="control-item">
+                <div class="key-button">D</div>
+                <span>Move Right</span>
+            </div>
+            <div class="control-item">
+                <div class="key-button">Space</div>
+                <span>Jump/Flip</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Particles Container -->
+    <div class="success-particles" id="successParticles"></div>
+
+    <!-- Three.js for 3D Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        // Game Variables
+        let scene, camera, renderer, playerBlock;
+        let gameStarted = false;
+        let keys = { w: false, a: false, s: false, d: false, space: false };
+        let zones = [];
+        let currentZone = null;
+        let blockPosition = { x: 0, y: 1, z: 0 };
+        let blockRotation = { x: 0, y: 0, z: 0 };
+        let velocity = { x: 0, y: 0, z: 0 };
+        let isJumping = false;
+        let groundY = 0.5;
+
+        // Zone Configurations
+        const zoneConfigs = {
+            about: {
+                name: "About Me",
+                color: 0xFF6B35,
+                position: { x: -30, z: -30 },
+                emoji: "👨‍💻",
+                url: "https://kevinbradleykb.github.io/portfolio/about/"
+            },
+            experience: {
+                name: "Experience", 
+                color: 0xF7931E,
+                position: { x: 30, z: -30 },
+                emoji: "💼",
+                url: "https://kevinbradleykb.github.io/portfolio/experience/"
+            },
+            projects: {
+                name: "Projects",
+                color: 0x06FFA5,
+                position: { x: -30, z: 30 },
+                emoji: "🚀", 
+                url: "https://kevinbradleykb.github.io/portfolio/projects/"
+            },
+            skills: {
+                name: "Skills",
+                color: 0x00D4FF,
+                position: { x: 30, z: 30 },
+                emoji: "⚡",
+                url: "https://kevinbradleykb.github.io/portfolio/skills/"
+            },
+            contact: {
+                name: "Contact",
+                color: 0x7209B7,
+                position: { x: 0, z: 0 },
+                emoji: "📞",
+                url: "https://kevinbradleykb.github.io/portfolio/contact/"
+            }
+        };
+
+        // Custom Cursor
+        function initCustomCursor() {
+            const cursor = document.getElementById('customCursor');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            document.addEventListener('mousedown', () => {
+                cursor.classList.add('clicking');
+            });
+
+            document.addEventListener('mouseup', () => {
+                cursor.classList.remove('clicking');
+            });
+        }
+
+        // Initialize 3D Scene
+        function initScene() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x87CEEB);
+            scene.fog = new THREE.Fog(0x87CEEB, 50, 200);
+
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 20, 30);
+            camera.lookAt(0, 0, 0);
+
+            // Create renderer
+            const canvas = document.getElementById('game-canvas');
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            // Add lighting
+            addLighting();
+            
+            // Create ground
+            createGround();
+            
+            // Create player block
+            createPlayerBlock();
+            
+            // Create zones
+            createZones();
+            
+            // Add decorative elements
+            addDecorations();
+            
+            // Start animation loop
+            animate();
+        }
+
+        function addLighting() {
+            // Ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            // Main directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(50, 50, 50);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.mapSize.width = 2048;
+            directionalLight.shadow.mapSize.height = 2048;
+            directionalLight.shadow.camera.near = 0.5;
+            directionalLight.shadow.camera.far = 500;
+            directionalLight.shadow.camera.left = -100;
+            directionalLight.shadow.camera.right = 100;
+            directionalLight.shadow.camera.top = 100;
+            directionalLight.shadow.camera.bottom = -100;
+            scene.add(directionalLight);
+
+            // Colorful point lights for zones
+            Object.keys(zoneConfigs).forEach(zoneName => {
+                const config = zoneConfigs[zoneName];
+                const light = new THREE.PointLight(config.color, 0.5, 50);
+                light.position.set(config.position.x, 10, config.position.z);
+                scene.add(light);
+            });
+        }
+
+        function createGround() {
+            // Main ground platform
+            const groundGeometry = new THREE.PlaneGeometry(200, 200);
+            const groundMaterial = new THREE.MeshLambertMaterial({ 
+                color: 0x98FB98,
+                transparent: true,
+                opacity: 0.8
+            });
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            ground.receiveShadow = true;
+            scene.add(ground);
+
+            // Grid pattern
+            const gridHelper = new THREE.GridHelper(200, 40, 0x666666, 0x666666);
+            gridHelper.material.opacity = 0.2;
+            gridHelper.material.transparent = true;
+            scene.add(gridHelper);
+        }
+
+        function createPlayerBlock() {
+            // Create player block with Roblox-style appearance
+            const blockGeometry = new THREE.BoxGeometry(2, 2, 2);
+            const blockMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0xFF6B35,
+                shininess: 100
+            });
+            playerBlock = new THREE.Mesh(blockGeometry, blockMaterial);
+            playerBlock.position.set(blockPosition.x, blockPosition.y, blockPosition.z);
+            playerBlock.castShadow = true;
+            scene.add(playerBlock);
+
+            // Add a face to the block
+            const faceGeometry = new THREE.PlaneGeometry(1.5, 1.5);
+            const canvas = document.createElement('canvas');
+            canvas.width = 128;
+            canvas.height = 128;
+            const ctx = canvas.getContext('2d');
+            
+            // Draw simple Roblox-style face
+            ctx.fillStyle = '#FFD23F';
+            ctx.fillRect(0, 0, 128, 128);
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(40, 45, 8, 0, Math.PI * 2); // Left eye
+            ctx.arc(88, 45, 8, 0, Math.PI * 2); // Right eye
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(64, 85, 20, 0, Math.PI); // Smile
+            ctx.stroke();
+
+            const faceTexture = new THREE.CanvasTexture(canvas);
+            const faceMaterial = new THREE.MeshBasicMaterial({ map: faceTexture });
+            const face = new THREE.Mesh(faceGeometry, faceMaterial);
+            face.position.z = 1.01;
+            playerBlock.add(face);
+        }
+
+        function createZones() {
+            Object.keys(zoneConfigs).forEach(zoneName => {
+                const config = zoneConfigs[zoneName];
                 
-                <div class="cta-buttons" style="opacity: 0; animation: fadeInUp 1s ease 2.5s forwards;">
-                    <a href="#about" class="btn-primary">
-                        <span>Discover My Story</span>
-                        <span>↓</span>
-                    </a>
-                    <a href="#projects" class="btn-secondary">
-                        <span>View My Work</span>
-                        <span>🚀</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                // Zone platform
+                const platformGeometry = new THREE.CylinderGeometry(8, 8, 1, 32);
+                const platformMaterial = new THREE.MeshPhongMaterial({ 
+                    color: config.color,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const platform = new THREE.Mesh(platformGeometry, platformMaterial);
+                platform.position.set(config.position.x, 0.5, config.position.z);
+                platform.receiveShadow = true;
+                scene.add(platform);
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">
-                    The journey from NCAA athlete to cybersecurity professional
-                </p>
-            </div>
+                // Zone indicator pillar
+                const pillarGeometry = new THREE.CylinderGeometry(1, 1, 15, 16);
+                const pillarMaterial = new THREE.MeshPhongMaterial({ 
+                    color: config.color,
+                    emissive: config.color,
+                    emissiveIntensity: 0.2
+                });
+                const pillar = new THREE.Mesh(pillarGeometry, pillarMaterial);
+                pillar.position.set(config.position.x, 7.5, config.position.z);
+                pillar.castShadow = true;
+                scene.add(pillar);
 
-            <div class="about-grid">
-                <div class="about-content fade-in">
-                    <div class="about-text">
-                        <h3>My Story</h3>
-                        <p>
-                            I'm Kevin Bradley, a Security Engineer currently excelling in Group1001's technology rotational program. My journey combines the discipline of elite athletics with the precision of cybersecurity and data analysis.
-                        </p>
-                        <p>
-                            As a Yale graduate and former NCAA All-American swimmer, I bring the same dedication to excellence that drove my athletic achievements into the world of technology. My experience spans financial services at UBS, equity research at Horizon Kinetics, and international business strategy in Shanghai.
-                        </p>
-                        <p>
-                            I'm passionate about leveraging technology to solve complex problems, whether it's developing cybersecurity protocols, analyzing financial data, or creating innovative solutions that bridge the gap between technical complexity and business value.
-                        </p>
-                    </div>
-                </div>
+                // Floating zone label
+                const labelCanvas = document.createElement('canvas');
+                labelCanvas.width = 256;
+                labelCanvas.height = 64;
+                const labelCtx = labelCanvas.getContext('2d');
+                labelCtx.fillStyle = '#FFFFFF';
+                labelCtx.fillRect(0, 0, 256, 64);
+                labelCtx.fillStyle = '#000000';
+                labelCtx.font = 'bold 24px Arial';
+                labelCtx.textAlign = 'center';
+                labelCtx.fillText(config.name, 128, 35);
+                labelCtx.fillText(config.emoji, 128, 55);
 
-                <div class="about-highlights fade-in">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🎓</div>
-                        <h4>Yale Graduate</h4>
-                        <p>BA in Sociology & Public Health with focus on data analysis and research methodology</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🏆</div>
-                        <h4>NCAA All-American</h4>
-                        <p>Elite performance under pressure, time management, and team leadership</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🛡️</div>
-                        <h4>Cybersecurity Expert</h4>
-                        <p>Threat intelligence, risk assessment, and enterprise security solutions</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">📊</div>
-                        <h4>Data Analyst</h4>
-                        <p>R, Python, SQL, Tableau for insights-driven decision making</p>
-                    </div>
-                </div>
-            </div>
+                const labelTexture = new THREE.CanvasTexture(labelCanvas);
+                const labelMaterial = new THREE.MeshBasicMaterial({ 
+                    map: labelTexture,
+                    transparent: true
+                });
+                const labelGeometry = new THREE.PlaneGeometry(8, 2);
+                const label = new THREE.Mesh(labelGeometry, labelMaterial);
+                label.position.set(config.position.x, 18, config.position.z);
+                label.lookAt(camera.position);
+                scene.add(label);
 
-            <div class="personal-interests fade-in">
-                <h3>Beyond the Code</h3>
-                <p>When I'm not diving into cybersecurity protocols or analyzing data trends, you'll find me:</p>
-                <div class="interest-tags">
-                    <span class="interest-tag">🥾 Hiking mountain trails</span>
-                    <span class="interest-tag">📚 Reading tech industry insights</span>
-                    <span class="interest-tag">✍️ Creative writing projects</span>
-                    <span class="interest-tag">🎨 Digital design and illustration</span>
-                    <span class="interest-tag">🌟 Exploring emerging technologies</span>
-                    <span class="interest-tag">🏊‍♂️ Swimming and water sports</span>
-                </div>
-            </div>
-        </div>
-    </section>
+                zones.push({
+                    name: zoneName,
+                    platform: platform,
+                    pillar: pillar,
+                    label: label,
+                    config: config
+                });
+            });
+        }
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">
-                    A showcase of technical solutions and innovative approaches to real-world challenges
-                </p>
-            </div>
+        function addDecorations() {
+            // Add floating blocks around the world
+            for (let i = 0; i < 20; i++) {
+                const decorGeometry = new THREE.BoxGeometry(
+                    Math.random() * 2 + 1,
+                    Math.random() * 2 + 1, 
+                    Math.random() * 2 + 1
+                );
+                const decorMaterial = new THREE.MeshPhongMaterial({ 
+                    color: Math.random() * 0xffffff
+                });
+                const decorBlock = new THREE.Mesh(decorGeometry, decorMaterial);
+                decorBlock.position.set(
+                    (Math.random() - 0.5) * 150,
+                    Math.random() * 10 + 5,
+                    (Math.random() - 0.5) * 150
+                );
+                decorBlock.rotation.set(
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI
+                );
+                decorBlock.castShadow = true;
+                scene.add(decorBlock);
 
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">🛡️</div>
-                        <div class="project-title">
-                            <h3>Cybersecurity Risk Framework</h3>
-                            <p class="project-tech">Python • Risk Analysis • Security Protocols</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Developed comprehensive cybersecurity assessment framework for enterprise applications, implementing automated risk scoring and threat detection protocols.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Automated Risk Assessment</span>
-                        <span class="feature-tag">Threat Intelligence Integration</span>
-                        <span class="feature-tag">Real-time Monitoring</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('security-framework')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase detailed documentation</p>
-                    </div>
-                </div>
+                // Animate floating blocks
+                decorBlock.userData = {
+                    originalY: decorBlock.position.y,
+                    floatSpeed: Math.random() * 0.02 + 0.01,
+                    rotateSpeed: Math.random() * 0.02 + 0.01
+                };
+            }
 
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">📊</div>
-                        <div class="project-title">
-                            <h3>Financial Data Analytics Platform</h3>
-                            <p class="project-tech">R • Python • Tableau • SQL</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Built comprehensive analytics platform for equity research, processing financial statements and earnings data to generate actionable investment insights.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Automated Data Processing</span>
-                        <span class="feature-tag">Interactive Dashboards</span>
-                        <span class="feature-tag">Predictive Modeling</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('analytics-platform')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase portfolio analysis tools</p>
-                    </div>
-                </div>
+            // Add clouds
+            for (let i = 0; i < 10; i++) {
+                const cloudGeometry = new THREE.SphereGeometry(5, 16, 16);
+                const cloudMaterial = new THREE.MeshLambertMaterial({ 
+                    color: 0xFFFFFF,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const cloud = new THREE.Mesh(cloudGeometry, cloudMaterial);
+                cloud.position.set(
+                    (Math.random() - 0.5) * 200,
+                    Math.random() * 20 + 30,
+                    (Math.random() - 0.5) * 200
+                );
+                cloud.scale.set(
+                    Math.random() * 2 + 1,
+                    Math.random() * 0.5 + 0.5,
+                    Math.random() * 2 + 1
+                );
+                scene.add(cloud);
+            }
+        }
 
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">🌐</div>
-                        <div class="project-title">
-                            <h3>UBS Intranet Extension</h3>
-                            <p class="project-tech">JavaScript • UI/UX • Agile Development</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Led 7-person team to design and develop intranet extension for employee locker reservations, improving workplace efficiency and user experience.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Team Leadership</span>
-                        <span class="feature-tag">User-Centered Design</span>
-                        <span class="feature-tag">Agile Methodology</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('intranet-extension')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase team collaboration project</p>
-                    </div>
-                </div>
+        // Game Controls
+        function initControls() {
+            document.addEventListener('keydown', (event) => {
+                if (!gameStarted) return;
+                
+                switch(event.code) {
+                    case 'KeyW': keys.w = true; break;
+                    case 'KeyA': keys.a = true; break;
+                    case 'KeyS': keys.s = true; break;
+                    case 'KeyD': keys.d = true; break;
+                    case 'Space': 
+                        event.preventDefault();
+                        if (!isJumping) {
+                            keys.space = true;
+                            jump();
+                        }
+                        break;
+                }
+            });
 
-                <div class="project-card fade-in new-project">
-                    <div class="project-header">
-                        <div class="project-icon">➕</div>
-                        <div class="project-title">
-                            <h3>Add New Project</h3>
-                            <p class="project-tech">Ready to showcase your latest work</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Upload and showcase your latest projects, technical achievements, or innovative solutions. Perfect for continuous portfolio updates.
-                    </p>
-                    <div class="project-upload">
-                        <button class="upload-btn primary" onclick="handleNewProject()">
-                            🚀 Create New Project
-                        </button>
-                        <p class="upload-status">Click to add your next breakthrough project</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            document.addEventListener('keyup', (event) => {
+                switch(event.code) {
+                    case 'KeyW': keys.w = false; break;
+                    case 'KeyA': keys.a = false; break;
+                    case 'KeyS': keys.s = false; break;
+                    case 'KeyD': keys.d = false; break;
+                    case 'Space': keys.space = false; break;
+                }
+            });
+        }
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">
-                    A progression through cybersecurity, financial technology, and data analysis roles at leading organizations
-                </p>
-            </div>
+        function jump() {
+            if (!isJumping) {
+                isJumping = true;
+                velocity.y = 0.8;
+                
+                // Add random rotation for fun flipping effect
+                const flipAxis = Math.random();
+                const flipAmount = Math.PI * 2;
+                
+                if (flipAxis < 0.33) {
+                    blockRotation.x += flipAmount;
+                } else if (flipAxis < 0.66) {
+                    blockRotation.z += flipAmount;
+                } else {
+                    blockRotation.y += flipAmount;
+                }
+                
+                playSound('jump');
+            }
+        }
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">G1</div>
-                    <div class="timeline-content">
-                        <div class="company">Group1001</div>
-                        <h3 class="role">Security Engineer - Technology Rotational Program</h3>
-                        <div class="duration">Jan 2024 - Present</div>
-                        <ul class="achievements">
-                            <li>Developing comprehensive cybersecurity solutions across multiple business units in a structured rotational program</li>
-                            <li>Implementing security protocols and risk assessment frameworks for enterprise-level applications</li>
-                            <li>Collaborating with cross-functional teams to integrate security best practices into development workflows</li>
-                        </ul>
-                    </div>
-                </div>
+        function updatePlayerMovement() {
+            if (!gameStarted) return;
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">HK</div>
-                    <div class="timeline-content">
-                        <div class="company">Horizon Kinetics</div>
-                        <h3 class="role">Equity Research Intern</h3>
-                        <div class="duration">Sep 2023 - Dec 2023</div>
-                        <ul class="achievements">
-                            <li>Authored in-house documentation for INFL and BLOC investment portfolios through comprehensive equity research</li>
-                            <li>Analyzed financial statements (10-Q's, 10-K's, DEF 14As) and synthesized key insights from earnings meetings</li>
-                            <li>Built a comprehensive 'Research Library' on WordPress, creating 75+ optimized subpages for improved client experience</li>
-                        </ul>
-                    </div>
-                </div>
+            const speed = 0.3;
+            
+            // Handle movement
+            if (keys.w) velocity.z -= speed;
+            if (keys.s) velocity.z += speed;
+            if (keys.a) velocity.x -= speed;
+            if (keys.d) velocity.x += speed;
+            
+            // Apply friction
+            velocity.x *= 0.9;
+            velocity.z *= 0.9;
+            
+            // Apply gravity
+            velocity.y -= 0.02;
+            
+            // Update position
+            blockPosition.x += velocity.x;
+            blockPosition.z += velocity.z;
+            blockPosition.y += velocity.y;
+            
+            // Ground collision
+            if (blockPosition.y <= groundY) {
+                blockPosition.y = groundY;
+                velocity.y = 0;
+                isJumping = false;
+            }
+            
+            // Boundary checks
+            const boundary = 90;
+            blockPosition.x = Math.max(-boundary, Math.min(boundary, blockPosition.x));
+            blockPosition.z = Math.max(-boundary, Math.min(boundary, blockPosition.z));
+            
+            // Update block position and rotation
+            playerBlock.position.set(blockPosition.x, blockPosition.y, blockPosition.z);
+            playerBlock.rotation.set(blockRotation.x, blockRotation.y, blockRotation.z);
+            
+            // Smooth rotation decay
+            blockRotation.x *= 0.95;
+            blockRotation.y *= 0.95;
+            blockRotation.z *= 0.95;
+            
+            // Update camera to follow player
+            const cameraOffset = { x: 0, y: 15, z: 20 };
+            camera.position.x = blockPosition.x + cameraOffset.x;
+            camera.position.y = blockPosition.y + cameraOffset.y;
+            camera.position.z = blockPosition.z + cameraOffset.z;
+            camera.lookAt(blockPosition.x, blockPosition.y, blockPosition.z);
+            
+            // Check zone collisions
+            checkZoneCollisions();
+        }
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">CB</div>
-                    <div class="timeline-content">
-                        <div class="company">ConBio (康奥科技)</div>
-                        <h3 class="role">Business Strategy and Technology Intern</h3>
-                        <div class="duration">Jun 2023 - Aug 2023 • Shanghai, China</div>
-                        <ul class="achievements">
-                            <li>Led website redesign initiative using Figma, creating wireframes that enhanced UX for global expansion strategy</li>
-                            <li>Adapted PowerPoint presentations for FDA approval, implementing U.S. corporate standards and presentation techniques</li>
-                            <li>Contributed to successful FDA approval and company's acquisition of Massachusetts manufacturing facility</li>
-                        </ul>
-                    </div>
-                </div>
+        function checkZoneCollisions() {
+            const playerPos = new THREE.Vector3(blockPosition.x, blockPosition.y, blockPosition.z);
+            
+            zones.forEach(zone => {
+                const zonePos = new THREE.Vector3(
+                    zone.config.position.x, 
+                    0, 
+                    zone.config.position.z
+                );
+                const distance = playerPos.distanceTo(zonePos);
+                
+                if (distance < 10) {
+                    if (currentZone !== zone.name) {
+                        currentZone = zone.name;
+                        highlightZone(zone.name);
+                        
+                        // Check if player is close enough to enter zone
+                        if (distance < 5) {
+                            enterZone(zone);
+                        }
+                    }
+                } else if (currentZone === zone.name && distance > 12) {
+                    currentZone = null;
+                    removeZoneHighlight();
+                }
+            });
+        }
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">UB</div>
-                    <div class="timeline-content">
-                        <div class="company">UBS Financial Services</div>
-                        <h3 class="role">Technology Intern - Cyber Threat Intelligence Team</h3>
-                        <div class="duration">Jun 2022 - Aug 2022</div>
-                        <ul class="achievements">
-                            <li>Developed division-specific cyber attack contingency plans for the CTI team, focusing on risk management and impact minimization</li>
-                            <li>Led a 7-person intern team using agile methodology to design an intranet extension for on-site locker reservations</li>
-                            <li>Gained deep expertise in cybercrime trends, threat analysis, and enterprise security protocols</li>
-                        </ul>
-                    </div>
-                </div>
+        function highlightZone(zoneName) {
+            document.querySelectorAll('.zone-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector(`[data-zone="${zoneName}"]`).classList.add('active');
+            
+            // Make the zone pillar glow
+            const zone = zones.find(z => z.name === zoneName);
+            if (zone) {
+                zone.pillar.material.emissiveIntensity = 0.5;
+            }
+        }
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">UB</div>
-                    <div class="timeline-content">
-                        <div class="company">UBS Financial Services</div>
-                        <h3 class="role">Technology Intern - WMA IT Team</h3>
-                        <div class="duration">Jun 2021 - Aug 2021</div>
-                        <ul class="achievements">
-                            <li>Managed Tableau dashboards tracking device issues across Wealth Management America division</li>
-                            <li>Delivered daily analytics reports identifying device trends and security anomalies</li>
-                            <li>Collaborated on COVID-19 Return-to-Office strategy using IoT sensors for occupancy monitoring</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        function removeZoneHighlight() {
+            document.querySelectorAll('.zone-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Remove glow from all pillars
+            zones.forEach(zone => {
+                zone.pillar.material.emissiveIntensity = 0.2;
+            });
+        }
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">
-                    A comprehensive toolkit spanning cybersecurity, data analysis, and modern development technologies
-                </p>
-            </div>
+        function enterZone(zone) {
+            // Create success particle effect
+            createSuccessParticles();
+            playSound('success');
+            
+            // Brief delay before navigation
+            setTimeout(() => {
+                // Navigate to zone page (simulated for now)
+                alert(`🎉 Entering ${zone.config.name}! 
+                
+In a real deployment, this would navigate to:
+${zone.config.url}
+                
+Each zone would have its own dedicated page with detailed portfolio content!`);
+            }, 1000);
+        }
 
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>
-                        <div class="skill-icon">🛡️</div>
-                        Cybersecurity
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Threat Intelligence</span>
-                        <span class="skill-tag">Risk Assessment</span>
-                        <span class="skill-tag">Security Protocols</span>
-                        <span class="skill-tag">Incident Response</span>
-                        <span class="skill-tag">Vulnerability Assessment</span>
-                        <span class="skill-tag">Network Security</span>
-                    </div>
-                </div>
+        function createSuccessParticles() {
+            const container = document.getElementById('successParticles');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                container.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 3000);
+            }
+        }
 
-                <div class="skill-category fade-in">
-                    <h3>
-                        <div class="skill-icon">📊</div>
-                        Data Analysis
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">R Programming</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">Data Visualization</span>
-                    </div>
-                </div>
+        // Sound Effects (simulated)
+        function playSound(type) {
+            // In a real game, you'd play actual audio files
+            console.log(`🔊 Playing sound: ${type}`);
+        }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">💼</div>
-                       Financial Technology
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Equity Research</span>
-                       <span class="skill-tag">Financial Modeling</span>
-                       <span class="skill-tag">Portfolio Analysis</span>
-                       <span class="skill-tag">Risk Management</span>
-                       <span class="skill-tag">Regulatory Compliance</span>
-                       <span class="skill-tag">Market Analysis</span>
-                   </div>
-               </div>
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            updatePlayerMovement();
+            
+            // Animate decorative blocks
+            scene.children.forEach(child => {
+                if (child.userData && child.userData.originalY !== undefined) {
+                    child.position.y = child.userData.originalY + 
+                        Math.sin(Date.now() * child.userData.floatSpeed) * 2;
+                    child.rotation.x += child.userData.rotateSpeed;
+                    child.rotation.y += child.userData.rotateSpeed;
+                }
+            });
+            
+            // Render scene
+            renderer.render(scene, camera);
+        }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🔧</div>
-                       Technical Tools
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Terraform</span>
-                       <span class="skill-tag">Zscaler</span>
-                       <span class="skill-tag">Neo4j</span>
-                       <span class="skill-tag">Cypher (Graph DB Query Language)</span>
-                       <span class="skill-tag">Microsoft Office Suite</span>
-                       <span class="skill-tag">Figma</span>
-                       <span class="skill-tag">WordPress</span>
-                       <span class="skill-tag">Git</span>
-                       <span class="skill-tag">Agile Methodology</span>
-                   </div>
-               </div>
+        // Game Initialization
+        function startGame() {
+            document.getElementById('welcomeModal').style.display = 'none';
+            gameStarted = true;
+            playSound('start');
+        }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🌟</div>
-                       Leadership & Soft Skills
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Project Management</span>
-                       <span class="skill-tag">Team Leadership</span>
-                       <span class="skill-tag">Strategic Planning</span>
-                       <span class="skill-tag">Cross-cultural Communication</span>
-                       <span class="skill-tag">Problem Solving</span>
-                       <span class="skill-tag">Time Management</span>
-                   </div>
-               </div>
+        // Window Resize Handler
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🏆</div>
-                       Certifications
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">IBM Python for Data Science</span>
-                       <span class="skill-tag">IBM AI & Development</span>
-                       <span class="skill-tag">IBM Databases and SQL</span>
-                       <span class="skill-tag">NCAA Scholar All-American</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
+        // Initialize Everything
+        window.addEventListener('load', () => {
+            // Initialize systems
+            initCustomCursor();
+            initScene();
+            initControls();
+            
+            // Hide loading screen
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                    document.getElementById('game-ui').classList.add('visible');
+                }, 1000);
+            }, 3000);
+            
+            // Add window resize listener
+            window.addEventListener('resize', onWindowResize);
+        });
 
-   <!-- Education Section -->
-   <section id="education">
-       <div class="container">
-           <div class="section-header fade-in">
-               <h2 class="section-title">Education & Achievements</h2>
-               <p class="section-subtitle">
-                   Academic excellence combined with elite athletic performance and continuous professional development
-               </p>
-           </div>
+        // Zone card click handlers
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.zone-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const zoneName = card.dataset.zone;
+                    const zone = zones.find(z => z.name === zoneName);
+                    if (zone) {
+                        // Move player to zone
+                        blockPosition.x = zone.config.position.x;
+                        blockPosition.z = zone.config.position.z;
+                        blockPosition.y = 5; // Jump to zone
+                        velocity.y = 0;
+                        
+                        // Trigger zone entry
+                        setTimeout(() => {
+                            enterZone(zone);
+                        }, 1000);
+                    }
+                });
+            });
+        });
 
-           <div class="education-grid">
-               <div class="education-card fade-in">
-                   <div class="university">Yale University</div>
-                   <div class="degree">Bachelor of Arts - Sociology, Public Health</div>
-                   <div class="gpa">GPA: 3.55/4.0 • Graduated: August 2024</div>
-                   
-                   <div class="achievements-section">
-                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Relevant Coursework:</h4>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Introductory Statistics</span>
-                           <span class="skill-tag">Data Analysis & Exploration (R)</span>
-                           <span class="skill-tag">Microeconomics</span>
-                           <span class="skill-tag">Calculus</span>
-                       </div>
-                       
-                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Athletic Achievement:</h4>
-                       <span class="achievement-badge">Division I Varsity Swim & Dive Team</span>
-                       <span class="achievement-badge">5-Year Student-Athlete</span>
-                   </div>
-               </div>
-
-               <div class="education-card fade-in">
-                   <div class="university">University of Michigan</div>
-                   <div class="degree">Student-Athlete Program</div>
-                   <div class="gpa">September 2019 - April 2021</div>
-                   
-                   <div class="achievements-section">
-                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Elite Athletic Honors:</h4>
-                       <span class="achievement-badge">NCAA All-American</span>
-                       <span class="achievement-badge">NCAA Scholar All-American</span>
-                       
-                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Key Skills Developed:</h4>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Elite Performance Under Pressure</span>
-                           <span class="skill-tag">Advanced Time Management</span>
-                           <span class="skill-tag">Team Leadership</span>
-                           <span class="skill-tag">Goal-Oriented Mindset</span>
-                       </div>
-                   </div>
-               </div>
-           </div>
-
-           <!-- Additional Interests Section -->
-           <div class="education-card fade-in" style="margin-top: 2rem;">
-               <div class="university">Personal Interests</div>
-               <div class="degree">Balanced Professional and Personal Development</div>
-               
-               <div class="achievements-section">
-                   <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Current Interests:</h4>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Hiking & Outdoor Sports</span>
-                       <span class="skill-tag">Technical Reading</span>
-                       <span class="skill-tag">Creative Writing</span>
-                       <span class="skill-tag">Drawing & Design</span>
-                       <span class="skill-tag">Continuous Learning</span>
-                       <span class="skill-tag">Technology Trends</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
-
-   <!-- Contact Section -->
-   <section id="contact">
-       <div class="container">
-           <div class="contact fade-in">
-               <h2 class="section-title">Let's Connect</h2>
-               <p class="section-subtitle">
-                   Please feel free to reach out using the contact info below!
-               </p>
-
-               <div class="contact-links">
-                   <a href="mailto:kevinm.bradley1@gmail.com" class="contact-link">
-                       <div class="contact-icon">✉️</div>
-                       <span>kevinm.bradley1@gmail.com</span>
-                   </a>
-                   <a href="https://www.linkedin.com/in/kevinmichaelbradley" class="contact-link" target="_blank" rel="noopener noreferrer">
-                       <div class="contact-icon">💼</div>
-                       <span>LinkedIn Profile</span>
-                   </a>
-                   <a href="tel:+12039393358" class="contact-link">
-                       <div class="contact-icon">📱</div>
-                       <span>(203) 939-3358</span>
-                   </a>
-                   <a href="#" class="contact-link" onclick="downloadResume()">
-                       <div class="contact-icon">📄</div>
-                       <span>Download Resume</span>
-                   </a>
-               </div>
-
-               <div style="margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: var(--border-radius); border: 1px solid var(--card-border); box-shadow: var(--shadow-sm);">
-                   <h4 style="margin-bottom: 1rem; color: var(--accent-blue); font-weight: 600; letter-spacing: -0.01em;">Currently Based In:</h4>
-                   <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 500;">📍 Norwalk, CT 06855</p>
-                   <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5;">Open to opportunities in the Greater New York area and remote positions</p>
-               </div>
-           </div>
-       </div>
-   </section>
-
-   <!-- Footer -->
-   <footer>
-       <div class="container">
-           <p>&copy; 2025 Kevin Bradley. Built with modern web technologies and deployed on GitHub Pages.</p>
-           <p style="margin-top: 0.5rem; font-size: 0.9rem;">Security Engineer | Data Analyst | Yale Graduate | NCAA All-American</p>
-       </div>
-   </footer>
-
-   <script>
-       // Smooth scrolling for navigation
-       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-           anchor.addEventListener('click', function (e) {
-               e.preventDefault();
-               const target = document.querySelector(this.getAttribute('href'));
-               if (target) {
-                   target.scrollIntoView({
-                       behavior: 'smooth',
-                       block: 'start'
-                   });
-               }
-           });
-       });
-
-       // Navigation active state
-       function updateActiveNav() {
-           const sections = document.querySelectorAll('section[id]');
-           const navLinks = document.querySelectorAll('.nav-links a');
-           
-           let current = '';
-           sections.forEach(section => {
-               const sectionTop = section.getBoundingClientRect().top;
-               if (sectionTop <= 100) {
-                   current = section.getAttribute('id');
-               }
-           });
-
-           navLinks.forEach(link => {
-               link.classList.remove('active');
-               if (link.getAttribute('href') === `#${current}`) {
-                   link.classList.add('active');
-               }
-           });
-       }
-
-       // Fade in animation on scroll
-       function animateOnScroll() {
-           const elements = document.querySelectorAll('.fade-in, .timeline-item');
-           
-           elements.forEach(element => {
-               const elementTop = element.getBoundingClientRect().top;
-               const elementVisible = 150;
-               
-               if (elementTop < window.innerHeight - elementVisible) {
-                   element.classList.add('visible');
-               }
-           });
-       }
-
-       // Navigation background on scroll
-       function updateNavBackground() {
-           const nav = document.querySelector('nav');
-           const scrolled = window.pageYOffset;
-           
-           if (scrolled > 100) {
-               nav.style.background = 'rgba(255, 255, 255, 0.08)';
-               nav.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-           } else {
-               nav.style.background = 'rgba(255, 255, 255, 0.05)';
-               nav.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-           }
-       }
-
-       // Parallax effect for background orbs
-       function updateParallax() {
-           const scrolled = window.pageYOffset;
-           const orbs = document.querySelectorAll('.gradient-orb');
-           
-           orbs.forEach((orb, index) => {
-               const speed = 0.5 + (index * 0.1);
-               orb.style.transform = `translateY(${scrolled * speed}px)`;
-           });
-       }
-
-       // Enhanced hover effects for cards
-       function initCardEffects() {
-           const cards = document.querySelectorAll('.timeline-content, .skill-category, .education-card');
-           
-           cards.forEach(card => {
-               card.addEventListener('mouseenter', function() {
-                   this.style.transform = 'translateY(-8px) scale(1.02)';
-                   this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
-               });
-               
-               card.addEventListener('mouseleave', function() {
-                   this.style.transform = 'translateY(0) scale(1)';
-                   this.style.boxShadow = 'none';
-               });
-           });
-       }
-
-       // Typewriter effect for hero subtitle
-       function typewriterEffect() {
-           const subtitle = document.querySelector('.hero-text .subtitle');
-           const text = subtitle.textContent;
-           subtitle.textContent = '';
-           
-           let i = 0;
-           function type() {
-               if (i < text.length) {
-                   subtitle.textContent += text.charAt(i);
-                   i++;
-                   setTimeout(type, 100);
-               }
-           }
-           
-           setTimeout(type, 1000);
-       }
-
-       // Resume download function
-       function downloadResume() {
-           // Since we can't host actual files on GitHub Pages in this context,
-           // this would typically link to a PDF hosted in your repository
-           alert('Resume download would be available when you upload your PDF resume to the GitHub repository and link it here.');
-       }
-
-       // Copy email to clipboard
-       function copyEmail() {
-           navigator.clipboard.writeText('kevinm.bradley1@gmail.com').then(() => {
-               const notification = document.createElement('div');
-               notification.textContent = 'Email copied to clipboard!';
-               notification.style.cssText = `
-                   position: fixed;
-                   top: 20px;
-                   right: 20px;
-                   background: var(--accent-gradient);
-                   color: white;
-                   padding: 1rem 2rem;
-                   border-radius: 10px;
-                   z-index: 10000;
-                   animation: slideIn 0.3s ease;
-               `;
-               document.body.appendChild(notification);
-               setTimeout(() => notification.remove(), 3000);
-           });
-       }
-
-       // Add click handler for email link
-       document.addEventListener('DOMContentLoaded', function() {
-           const emailLink = document.querySelector('a[href^="mailto"]');
-           emailLink.addEventListener('click', function(e) {
-               e.preventDefault();
-               copyEmail();
-               // Still open email client
-               setTimeout(() => window.location.href = this.href, 1000);
-           });
-       });
-
-       // Performance optimization: Throttle scroll events
-       function throttle(func, limit) {
-           let inThrottle;
-           return function() {
-               const args = arguments;
-               const context = this;
-               if (!inThrottle) {
-                   func.apply(context, args);
-                   inThrottle = true;
-                   setTimeout(() => inThrottle = false, limit);
-               }
-           }
-       }
-
-       // Enhanced loading animation
-       function initLoadingSequence() {
-           const elements = document.querySelectorAll('.hero-text > *:not(h1)');
-           elements.forEach((element, index) => {
-               element.style.opacity = '0';
-               element.style.transform = 'translateY(30px)';
-               element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
-               
-               setTimeout(() => {
-                   element.style.opacity = '1';
-                   element.style.transform = 'translateY(0)';
-               }, 300 + (index * 150));
-           });
-       }
-
-       // Advanced intersection observer for better performance
-       function initIntersectionObserver() {
-           const options = {
-               threshold: 0.1,
-               rootMargin: '0px 0px -50px 0px'
-           };
-
-           const observer = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       entry.target.classList.add('visible');
-                   }
-               });
-           }, options);
-
-           document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
-               observer.observe(el);
-           });
-       }
-
-       // Enhanced keyboard navigation
-       function initKeyboardNavigation() {
-           document.addEventListener('keydown', function(e) {
-               if (e.key === 'Tab') {
-                   document.body.classList.add('keyboard-navigation');
-               }
-           });
-
-           document.addEventListener('mousedown', function() {
-               document.body.classList.remove('keyboard-navigation');
-           });
-       }
-
-       // Preloader animation
-       function initPreloader() {
-           const preloader = document.createElement('div');
-           preloader.innerHTML = `
-               <div style="
-                   position: fixed;
-                   top: 0;
-                   left: 0;
-                   width: 100%;
-                   height: 100%;
-                   background: var(--dark-bg);
-                   display: flex;
-                   align-items: center;
-                   justify-content: center;
-                   z-index: 10000;
-                   opacity: 1;
-                   transition: opacity 0.5s ease;
-               ">
-                   <div style="
-                       width: 50px;
-                       height: 50px;
-                       border: 3px solid rgba(255,255,255,0.1);
-                       border-top: 3px solid var(--accent-blue);
-                       border-radius: 50%;
-                       animation: spin 1s linear infinite;
-                   "></div>
-               </div>
-           `;
-           document.body.appendChild(preloader);
-
-           window.addEventListener('load', () => {
-               setTimeout(() => {
-                   preloader.style.opacity = '0';
-                   setTimeout(() => preloader.remove(), 500);
-               }, 800);
-           });
-       }
-
-       // Enhanced cursor trail effect (optional - can be disabled for performance)
-       function initCursorTrail() {
-           if (window.innerWidth > 768) { // Only on desktop
-               const cursor = document.createElement('div');
-               cursor.style.cssText = `
-                   position: fixed;
-                   width: 20px;
-                   height: 20px;
-                   background: var(--accent-gradient);
-                   border-radius: 50%;
-                   pointer-events: none;
-                   z-index: 9999;
-                   opacity: 0.7;
-                   transform: translate(-50%, -50%);
-                   transition: all 0.1s ease;
-                   mix-blend-mode: difference;
-               `;
-               document.body.appendChild(cursor);
-
-               document.addEventListener('mousemove', (e) => {
-                   cursor.style.left = e.clientX + 'px';
-                   cursor.style.top = e.clientY + 'px';
-               });
-
-               document.addEventListener('mousedown', () => {
-                   cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-               });
-
-               document.addEventListener('mouseup', () => {
-                   cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-               });
-           }
-       }
-
-       // Matrix Rain Effect
-       function initMatrixRain() {
-           const matrixContainer = document.getElementById('matrix-rain');
-           const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]()';
-           
-           function createMatrixColumn() {
-               const column = document.createElement('div');
-               column.className = 'matrix-column';
-               column.style.left = Math.random() * window.innerWidth + 'px';
-               column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-               column.style.animationDelay = Math.random() * 2 + 's';
-               
-               let text = '';
-               for (let i = 0; i < Math.floor(Math.random() * 20 + 10); i++) {
-                   text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
-               }
-               column.innerHTML = text;
-               
-               matrixContainer.appendChild(column);
-               
-               setTimeout(() => {
-                   if (column.parentNode) {
-                       column.parentNode.removeChild(column);
-                   }
-               }, 5000);
-           }
-           
-           setInterval(createMatrixColumn, 200);
-       }
-       
-       // Project Upload Functions
-       function handleProjectUpload(projectId) {
-           const messages = {
-               'security-framework': 'Cybersecurity Risk Framework files would be uploaded here. This could include threat assessment reports, risk matrices, and implementation guides.',
-               'analytics-platform': 'Financial Analytics Platform documentation would be uploaded here. This could include data models, dashboard screenshots, and performance metrics.',
-               'intranet-extension': 'UBS Intranet Extension project files would be uploaded here. This could include UI mockups, technical specifications, and team collaboration artifacts.'
-           };
-           
-           alert(messages[projectId] || 'Project files would be uploaded to showcase your technical work and achievements.');
-       }
-       
-       function handleNewProject() {
-           const projectName = prompt('Enter your new project name:');
-           if (projectName) {
-               alert(`Great! "${projectName}" would be added to your portfolio. You could then upload documentation, code samples, screenshots, and detailed project descriptions.`);
-           }
-       }
-
-       // Initialize all functions
-       document.addEventListener('DOMContentLoaded', function() {
-           initPreloader();
-           initLoadingSequence();
-           initIntersectionObserver();
-           initKeyboardNavigation();
-           initMatrixRain();
-           // initCursorTrail(); // Uncomment for cursor trail effect
-           
-           setTimeout(() => {
-               animateOnScroll();
-               updateActiveNav();
-               updateNavBackground();
-               initCardEffects();
-               typewriterEffect();
-           }, 1000);
-       });
-
-       // Event listeners with throttling for better performance
-       window.addEventListener('scroll', throttle(function() {
-           animateOnScroll();
-           updateActiveNav();
-           updateNavBackground();
-           updateParallax();
-       }, 16)); // 60fps throttling
-
-       // Add CSS animation keyframes
-       const style = document.createElement('style');
-       style.textContent = `
-           @keyframes slideIn {
-               from { transform: translateX(100%); opacity: 0; }
-               to { transform: translateX(0); opacity: 1; }
-           }
-           
-           @keyframes spin {
-               from { transform: rotate(0deg); }
-               to { transform: rotate(360deg); }
-           }
-           
-           /* Keyboard navigation enhancement */
-           .keyboard-navigation *:focus-visible {
-               outline: 2px solid var(--accent-blue) !important;
-               outline-offset: 2px !important;
-           }
-       `;
-       document.head.appendChild(style);
-   </script>
+        // Prevent context menu on right click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
 </body>
 </html>
