@@ -3,49 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kevin Bradley - Security Engineer & Data Analyst</title>
-    <meta name="description" content="Kevin Bradley - Security Engineer at Group1001, Yale graduate with expertise in cybersecurity, data analysis, and financial technology.">
+    <title>Kevin Bradley - Interactive 3D Portfolio</title>
+    <meta name="description" content="Kevin Bradley - Security Engineer's Interactive 3D Portfolio World">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            /* Professional Corporate Color Palette */
-            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            --secondary-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
-            --accent-gradient: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
-            
-            /* Sophisticated Background Colors */
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            
-            /* Professional Text Colors */
-            --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --text-muted: #94a3b8;
-            --text-accent: #3b82f6;
-            
-            /* Corporate Accent Colors */
-            --accent-blue: #3b82f6;
-            --accent-teal: #0891b2;
-            --accent-emerald: #059669;
-            --accent-gray: #64748b;
-            
-            /* Professional Spacing */
-            --section-padding: 6rem 0;
-            --card-padding: 2rem;
-            --border-radius: 16px;
-            
-            /* Corporate Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -54,2210 +18,1015 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.7;
-            font-weight: 400;
-            letter-spacing: -0.01em;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            cursor: grab;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        body:active {
+            cursor: grabbing;
         }
 
-        /* Advanced Background Effects with Matrix Rain */
-        .bg-effects {
+        /* Loading Screen */
+        #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: var(--dark-bg);
-            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
         }
 
-        /* Matrix Rain Effect */
-        .matrix-rain {
-            position: absolute;
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 255, 65, 0.3);
+            border-top: 3px solid #00ff41;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 2rem;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #00ff41, #0091ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .loading-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* UI Overlay */
+        #ui-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 100;
         }
 
-        .matrix-column {
+        /* Welcome Message */
+        #welcome-message {
             position: absolute;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            color: #00ff41;
-            text-shadow: 0 0 8px #00ff41;
-            animation: matrix-fall linear infinite;
-            opacity: 0.6;
-        }
-
-        @keyframes matrix-fall {
-            0% {
-                transform: translateY(-100vh);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 25s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary-gradient);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 320px;
-            height: 320px;
-            background: var(--secondary-gradient);
-            top: 60%;
-            right: 10%;
-            animation-delay: -12s;
-        }
-
-        .orb-3 {
-            width: 260px;
-            height: 260px;
-            background: var(--accent-gradient);
-            bottom: 20%;
-            left: 40%;
-            animation-delay: -7s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            33% { transform: translateY(-40px) rotate(120deg) scale(1.1); }
-            66% { transform: translateY(20px) rotate(240deg) scale(0.9); }
-        }
-
-        /* Grid Pattern Overlay */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.03;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 2rem;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: var(--card-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            padding: 1rem 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.875rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            letter-spacing: 0.01em;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: rgba(59, 130, 246, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .nav-links a.active {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Creative Landing Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            transform: translate(-50%, -50%);
             text-align: center;
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            opacity: 1;
+            transition: all 1s ease;
         }
 
-        .hero-content {
-            max-width: 800px;
-            width: 100%;
-            z-index: 2;
-        }
-
-        /* Animated Greeting */
-        .hero-greeting {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
+        #welcome-message.hidden {
             opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
+            transform: translate(-50%, -50%) scale(0.8);
+            pointer-events: none;
         }
 
-        .hero-name {
-            font-size: clamp(3rem, 8vw, 6rem);
+        .welcome-title {
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #00ff41 0%, #0091ff 50%, #ff0080 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1s forwards, glow 2s ease-in-out 2s infinite alternate;
-        }
-
-        .hero-welcome {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-        }
-
-        .hero-tagline {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            opacity: 0;
-            animation: fadeInUp 1s ease 2s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 145, 255, 0.3); }
-            to { text-shadow: 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(255, 0, 128, 0.4); }
+            from { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 65, 0.8); }
         }
 
-        /* About Section Styles */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-            align-items: start;
-        }
-
-        .about-content .about-text h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-content .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .highlight-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .highlight-card h4 {
+        .welcome-subtitle {
             font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .enter-btn {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
         }
 
-        .highlight-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.6);
         }
 
-        .personal-interests {
-            background: var(--card-bg);
+        /* Navigation UI */
+        #navigation-ui {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            pointer-events: auto;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        #navigation-ui.visible {
+            opacity: 1;
+        }
+
+        .nav-zone {
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-top: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-zone:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .nav-zone.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(30, 64, 175, 0.3));
+            border-color: #2563eb;
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-text {
+            font-weight: 500;
+        }
+
+        /* Controls Help */
+        #controls-help {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        #controls-help.visible {
+            opacity: 1;
+        }
+
+        .controls-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #00ff41;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .control-key {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            min-width: 60px;
             text-align: center;
         }
 
-        .personal-interests h3 {
+        /* Zone Info Display */
+        #zone-info {
+            position: absolute;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 350px;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        #zone-info.visible {
+            opacity: 1;
+        }
+
+        .zone-title {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: var(--secondary-gradient);
+            background: linear-gradient(135deg, #00ff41, #0091ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .personal-interests p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .interest-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .interest-tag {
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--text-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .interest-tag:hover {
-            background: rgba(0, 255, 65, 0.2);
-            border-color: #00ff41;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
-        }
-
-        /* Projects Section Styles */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .project-card.new-project {
-            border: 2px dashed var(--accent-blue);
-            text-align: center;
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-gradient);
-            border-radius: 15px;
-        }
-
-        .project-title h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .project-tech {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .project-description {
+        .zone-description {
             font-size: 1rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        .project-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .feature-tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-blue);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            font-weight: 500;
-        }
-
-        .project-upload {
-            border-top: 1px solid var(--card-border);
-            padding-top: 1.5rem;
-            text-align: center;
-        }
-
-        .upload-btn {
-            background: var(--secondary-gradient);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(5, 150, 105, 0.4);
-        }
-
-        .upload-btn.primary {
-            background: var(--primary-gradient);
-        }
-
-        .upload-status {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .profile-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transform: rotateY(-5deg) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .profile-card:hover::before {
-            left: 100%;
-        }
-
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin: 0 auto 1.5rem;
-            position: relative;
-        }
-
-        .profile-avatar::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .profile-card:hover .profile-avatar::after {
-            opacity: 1;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            box-shadow: var(--shadow-md);
-            letter-spacing: 0.01em;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-            filter: brightness(1.05);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 2px solid var(--card-border);
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            letter-spacing: 0.01em;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.05);
-            border-color: var(--accent-blue);
-            color: var(--text-primary);
-            transform: translateY(-1px);
-        }
-
-        /* Sections */
-        section {
-            padding: var(--section-padding);
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            letter-spacing: -0.01em;
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 4rem;
-            width: 45%;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 55%;
-        }
-
-        .timeline-content {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -30px;
-            border-left-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -30px;
-            border-right-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-icon {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            z-index: 1;
-        }
-
-        .company {
-            color: var(--accent-blue);
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: -0.01em;
-        }
-
-        .role {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-        }
-
-        .duration {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .achievements {
+        .zone-details {
             list-style: none;
-            margin-top: 1rem;
         }
 
-        .achievements li {
-            position: relative;
+        .zone-details li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
             padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-secondary);
+            position: relative;
         }
 
-        .achievements li::before {
+        .zone-details li::before {
             content: '▶';
             position: absolute;
             left: 0;
-            color: var(--accent-teal);
+            color: #00ff41;
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .skill-category h3 {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: rgba(59, 130, 246, 0.08);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            letter-spacing: 0.01em;
-        }
-
-        .skill-tag:hover {
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--text-primary);
-            border-color: var(--accent-blue);
-            transform: translateY(-1px);
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .education-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .education-card::before {
-            content: '';
-            position: absolute;
+        /* WebGL Canvas */
+        #webgl-canvas {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent-gradient);
-        }
-
-        .university {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .degree {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .gpa {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .achievements-section {
-            margin-top: 1rem;
-        }
-
-        .achievement-badge {
-            display: inline-block;
-            background: var(--secondary-gradient);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin: 0.2rem 0.5rem 0.2rem 0;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            text-align: center;
-            margin: 4rem 0;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 1.25rem 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--border-radius);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 500;
-            font-size: 0.875rem;
-            letter-spacing: 0.01em;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .contact-link:hover {
-            background: rgba(59, 130, 246, 0.05);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-blue);
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Advanced Performance Optimizations */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Improved Focus States for Accessibility */
-        a:focus-visible, button:focus-visible, .nav-links a:focus-visible {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 2px;
-            border-radius: 4px;
-        }
-
-        /* Enhanced Micro-Interactions */
-        .skill-tag {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .skill-tag:hover::before {
-            left: 100%;
-        }
-
-        /* Professional Card Effects */
-        .timeline-content, .skill-category, .education-card, .contact {
-            backdrop-filter: blur(24px) saturate(120%);
-            -webkit-backdrop-filter: blur(24px) saturate(120%);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow-lg);
-            background: var(--card-bg);
-        }
-
-        /* Floating Animation for CTA Buttons */
-        @keyframes float-button {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-3px); }
-        }
-
-        .btn-primary, .btn-secondary {
-            animation: float-button 3s ease-in-out infinite;
-        }
-
-        .btn-secondary {
-            animation-delay: 1.5s;
-        }
-
-        /* Progressive Enhancement for Scroll Effects */
-        @supports (scroll-behavior: smooth) {
-            html {
-                scroll-behavior: smooth;
-            }
-        }
-
-        /* Enhanced Card Hover Effects */
-        .timeline-content:hover, .skill-category:hover, .education-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.25);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* Improved Loading States */
-        .hero-text h1 {
-            animation: slide-up 1.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        @keyframes slide-up {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Consistent Navigation Highlight System */
-        .nav-links a {
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Remove conflicting underline - use only background highlighting */
-
-        /* Advanced Typography Improvements */
-        h1, h2, h3, h4, h5, h6 {
-            text-rendering: optimizeLegibility;
-            font-feature-settings: "kern" 1, "liga" 1;
-        }
-
-        /* Improved Selection Colors */
-        ::selection {
-            background: rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-
-        ::-moz-selection {
-            background: rgba(102, 126, 234, 0.3);
-            color: white;
-        }
-
-        /* Enhanced Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-gradient);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-gradient);
-        }
-
-        /* Tablet Responsiveness */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            nav {
-                padding: 0.875rem 2rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                padding: 0.625rem 1rem;
-                font-size: 0.825rem;
-            }
+            z-index: 1;
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            :root {
-                --section-padding: 4rem 0;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            nav {
+            #navigation-ui {
                 top: 1rem;
                 left: 1rem;
                 right: 1rem;
-                transform: none;
-                width: auto;
-                padding: 0.75rem 1.5rem;
-            }
-
-            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
                 gap: 0.5rem;
-                justify-content: center;
             }
 
-            .nav-links a {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.8rem;
-                border-radius: 8px;
-                white-space: nowrap;
+            .nav-zone {
+                flex: 1;
+                min-width: calc(50% - 0.25rem);
+                padding: 0.75rem;
+                margin-bottom: 0;
             }
 
-            /* Ensure active/hover states work on mobile */
-            .nav-links a:hover {
-                background: rgba(59, 130, 246, 0.15);
-                transform: none; /* Remove translateY on mobile */
+            .nav-text {
+                font-size: 0.9rem;
             }
 
-            .nav-links a.active {
-                background: var(--primary-gradient);
-                color: white;
-                box-shadow: var(--shadow-sm);
+            #controls-help {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
             }
 
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
+            #zone-info {
+                right: 1rem;
+                left: 1rem;
+                max-width: none;
+                top: auto;
+                bottom: 6rem;
+                transform: none;
             }
 
-            .hero-stats {
-                justify-content: center;
-                gap: 1.5rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                left: 40px !important;
-                margin-bottom: 3rem;
-            }
-
-            .timeline-item .timeline-content::before {
-                left: -30px !important;
-                border-right-color: rgba(255, 255, 255, 0.1) !important;
-                border-left-color: transparent !important;
-            }
-
-            .timeline-icon {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-
-            .skills-grid,
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            /* About Section Mobile */
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-highlights {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .personal-interests {
+            #welcome-message {
+                margin: 1rem;
                 padding: 2rem;
             }
 
-            .interest-tags {
-                gap: 0.5rem;
-            }
-
-            .interest-tag {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            /* Projects Section Mobile */
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.5rem;
-            }
-
-            .project-icon {
-                width: 50px;
-                height: 50px;
+            .welcome-title {
                 font-size: 2rem;
-            }
-
-            .project-features {
-                justify-content: center;
-            }
-
-            /* Hero Mobile Updates */
-            .hero-greeting {
-                font-size: 1.2rem;
-            }
-
-            .hero-name {
-                font-size: 3rem;
-            }
-
-            .hero-welcome {
-                font-size: 1.8rem;
-            }
-
-            .hero-tagline {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-        }
-
-        /* Small Mobile Devices */
-        @media (max-width: 480px) {
-            nav {
-                padding: 0.5rem 1rem;
-            }
-
-            .nav-links {
-                gap: 0.25rem;
-            }
-
-            .nav-links a {
-                padding: 0.4rem 0.6rem;
-                font-size: 0.75rem;
-                min-width: auto;
-            }
-
-            /* Stack navigation vertically on very small screens */
-            @media (max-width: 360px) {
-                .nav-links {
-                    flex-direction: column;
-                    gap: 0.25rem;
-                }
-
-                .nav-links a {
-                    text-align: center;
-                    width: 100%;
-                }
-
-                nav {
-                    padding: 0.75rem;
-                }
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-effects">
-        <div class="matrix-rain" id="matrix-rain"></div>
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Initializing Portfolio World</div>
+        <div class="loading-subtitle">Preparing your 3D experience...</div>
     </div>
-    <div class="grid-overlay"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- WebGL Canvas -->
+    <canvas id="webgl-canvas"></canvas>
 
-    <!-- Creative Landing Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <p class="hero-greeting">Hi, I'm</p>
-                <h1 class="hero-name">Kevin</h1>
-                <p class="hero-welcome">Welcome to my portfolio</p>
-                <p class="hero-tagline">
-                    Security Engineer crafting digital solutions at the intersection of cybersecurity, data analysis, and innovation
-                </p>
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+        <!-- Welcome Message -->
+        <div id="welcome-message">
+            <h1 class="welcome-title">Hi, I'm Kevin</h1>
+            <p class="welcome-subtitle">Welcome to my interactive 3D portfolio world. Navigate through different zones to explore my experience, projects, and skills in an immersive environment.</p>
+            <button class="enter-btn" onclick="enterPortfolio()">Enter Portfolio World</button>
+        </div>
+
+        <!-- Navigation UI -->
+        <div id="navigation-ui">
+            <div class="nav-zone active" data-zone="landing" onclick="navigateToZone('landing')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Landing</span>
+            </div>
+            <div class="nav-zone" data-zone="about" onclick="navigateToZone('about')">
+                <span class="nav-icon">👨‍💻</span>
+                <span class="nav-text">About</span>
+            </div>
+            <div class="nav-zone" data-zone="experience" onclick="navigateToZone('experience')">
+                <span class="nav-icon">💼</span>
+                <span class="nav-text">Experience</span>
+            </div>
+            <div class="nav-zone" data-zone="projects" onclick="navigateToZone('projects')">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-text">Projects</span>
+            </div>
+            <div class="nav-zone" data-zone="skills" onclick="navigateToZone('skills')">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Skills</span>
+            </div>
+        </div>
+
+        <!-- Zone Information -->
+        <div id="zone-info">
+            <h2 class="zone-title">Landing Zone</h2>
+            <p class="zone-description">Welcome to my digital universe! This is your starting point to explore my professional journey through interactive 3D spaces.</p>
+            <ul class="zone-details">
+                <li>Navigate with mouse/touch controls</li>
+                <li>Click zone buttons to travel instantly</li>
+                <li>Explore interactive elements in each zone</li>
+                <li>Experience my story in a new dimension</li>
+            </ul>
+        </div>
+
+        <!-- Controls Help -->
+        <div id="controls-help">
+            <div class="controls-title">Controls</div>
+            <div class="control-item">
+                <span class="control-key">Mouse</span>
+                <span>Look around</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">WASD</span>
+                <span>Move forward/back/left/right</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">Space</span>
+                <span>Move up</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">Shift</span>
+                <span>Move down</span>
+            </div>
+            <div class="control-item">
+                <span class="control-key">Click</span>
+                <span>Interact with objects</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <script>
+        // Global Variables
+        let scene, camera, renderer, controls;
+        let currentZone = 'landing';
+        let zoneObjects = {};
+        let interactiveObjects = [];
+        let raycaster, mouse;
+        let isExploring = false;
+
+        // Zone Data
+        const zones = {
+            landing: {
+                title: 'Landing Zone',
+                description: 'Welcome to my digital universe! This is your starting point to explore my professional journey through interactive 3D spaces.',
+                details: [
+                    'Navigate with mouse/touch controls',
+                    'Click zone buttons to travel instantly', 
+                    'Explore interactive elements in each zone',
+                    'Experience my story in a new dimension'
+                ],
+                position: { x: 0, y: 0, z: 0 },
+                color: 0x2563eb
+            },
+            about: {
+                title: 'About Me',
+                description: 'Discover my journey from NCAA athlete to cybersecurity professional. Interactive elements reveal my story, interests, and what drives my passion for technology.',
+                details: [
+                    'Yale graduate with Sociology & Public Health degree',
+                    'NCAA All-American swimmer background',
+                    'Expertise in cybersecurity and data analysis',
+                    'International experience in Shanghai'
+                ],
+                position: { x: -50, y: 0, z: 0 },
+                color: 0x059669
+            },
+            experience: {
+                title: 'Professional Experience',
+                description: 'Walk through my career timeline in 3D space. Each position is represented by interactive structures showing my growth and achievements.',
+                details: [
+                    'Group1001 Security Engineer (Current)',
+                    'Horizon Kinetics Equity Research',
+                    'ConBio Business Strategy (Shanghai)',
+                    'UBS Cyber Threat Intelligence Team'
+                ],
+                position: { x: 50, y: 0, z: 0 },
+                color: 0x0891b2
+            },
+            projects: {
+                title: 'Featured Projects',
+                description: 'Explore my technical projects in an interactive showcase. Each project is presented as a 3D structure you can examine and interact with.',
+                details: [
+                    'Cybersecurity Risk Assessment Framework',
+                    'Financial Data Analytics Platform',
+                    'UBS Intranet Extension Development',
+                    'Interactive project documentation'
+                ],
+                position: { x: 0, y: 0, z: 50 },
+                color: 0x7c3aed
+            },
+            skills: {
+                title: 'Technical Skills',
+                description: 'Navigate through my technical expertise visualized as an interactive skill tree. Each branch represents different competencies and certifications.',
+                details: [
+                    'Cybersecurity & Threat Intelligence',
+                    'Data Analysis (R, Python, SQL, Tableau)',
+                    'Cloud Technologies & Infrastructure',
+                    'Project Management & Team Leadership'
+                ],
+                position: { x: 0, y: 0, z: -50 },
+                color: 0xdc2626
+            }
+        };
+
+        // Initialize the 3D world
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x000011, 100, 1000);
+
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 10, 30);
+
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({
+                canvas: document.getElementById('webgl-canvas'),
+                antialias: true,
+                alpha: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000011, 1);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            // Initialize controls
+            initControls();
+
+            // Initialize raycaster for interactions
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+
+            // Create zones
+            createZones();
+
+            // Add lights
+            addLights();
+
+            // Add particle system
+            addParticleSystem();
+
+            // Add starfield
+            addStarfield();
+
+            // Event listeners
+            window.addEventListener('resize', onWindowResize);
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('click', onMouseClick);
+
+            // Start animation loop
+            animate();
+        }
+
+        // Controls system
+        function initControls() {
+            const keys = {
+                w: false, a: false, s: false, d: false,
+                space: false, shift: false
+            };
+
+            document.addEventListener('keydown', (event) => {
+                switch(event.code) {
+                    case 'KeyW': keys.w = true; break;
+                    case 'KeyA': keys.a = true; break;
+                    case 'KeyS': keys.s = true; break;
+                    case 'KeyD': keys.d = true; break;
+                    case 'Space': keys.space = true; event.preventDefault(); break;
+                    case 'ShiftLeft': keys.shift = true; break;
+                }
+            });
+
+            document.addEventListener('keyup', (event) => {
+                switch(event.code) {
+                    case 'KeyW': keys.w = false; break;
+                    case 'KeyA': keys.a = false; break;
+                    case 'KeyS': keys.s = false; break;
+                    case 'KeyD': keys.d = false; break;
+                    case 'Space': keys.space = false; break;
+                    case 'ShiftLeft': keys.shift = false; break;
+                }
+            });
+
+            // Mouse controls
+            let isMouseDown = false;
+            let mouseX = 0, mouseY = 0;
+
+            document.addEventListener('mousedown', (event) => {
+                isMouseDown = true;
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                if (!isMouseDown || !isExploring) return;
+
+                const deltaX = event.clientX - mouseX;
+                const deltaY = event.clientY - mouseY;
+
+                camera.rotation.y -= deltaX * 0.002;
+                camera.rotation.x -= deltaY * 0.002;
+                camera.rotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, camera.rotation.x));
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            // Movement update function
+            controls = {
+                update: () => {
+                    if (!isExploring) return;
+
+                    const speed = 0.5;
+                    const direction = new THREE.Vector3();
+                    
+                    if (keys.w) direction.z -= speed;
+                    if (keys.s) direction.z += speed;
+                    if (keys.a) direction.x -= speed;
+                    if (keys.d) direction.x += speed;
+                    if (keys.space) direction.y += speed;
+                    if (keys.shift) direction.y -= speed;
+
+                    // Apply camera rotation to movement
+                    direction.applyEuler(new THREE.Euler(0, camera.rotation.y, 0));
+                    camera.position.add(direction);
+                }
+            };
+        }
+
+        // Create different zones
+        function createZones() {
+            Object.keys(zones).forEach(zoneName => {
+                const zone = zones[zoneName];
+                const group = new THREE.Group();
                 
-                <div class="cta-buttons" style="opacity: 0; animation: fadeInUp 1s ease 2.5s forwards;">
-                    <a href="#about" class="btn-primary">
-                        <span>Discover My Story</span>
-                        <span>↓</span>
-                    </a>
-                    <a href="#projects" class="btn-secondary">
-                        <span>View My Work</span>
-                        <span>🚀</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                // Zone platform
+                const platformGeometry = new THREE.CylinderGeometry(20, 20, 2, 32);
+                const platformMaterial = new THREE.MeshLambertMaterial({ 
+                    color: zone.color,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const platform = new THREE.Mesh(platformGeometry, platformMaterial);
+                platform.position.set(zone.position.x, -1, zone.position.z);
+                platform.receiveShadow = true;
+                group.add(platform);
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">
-                    The journey from NCAA athlete to cybersecurity professional
-                </p>
-            </div>
+                // Zone identifier - floating crystal
+                const crystalGeometry = new THREE.OctahedronGeometry(3);
+                const crystalMaterial = new THREE.MeshPhongMaterial({ 
+                    color: zone.color,
+                    shininess: 100,
+                    transparent: true,
+                    opacity: 0.9
+                });
+                const crystal = new THREE.Mesh(crystalGeometry, crystalMaterial);
+                crystal.position.set(zone.position.x, 8, zone.position.z);
+                crystal.castShadow = true;
+                crystal.userData = { zone: zoneName, type: 'crystal' };
+                group.add(crystal);
+                interactiveObjects.push(crystal);
 
-            <div class="about-grid">
-                <div class="about-content fade-in">
-                    <div class="about-text">
-                        <h3>My Story</h3>
-                        <p>
-                            I'm Kevin Bradley, a Security Engineer currently excelling in Group1001's technology rotational program. My journey combines the discipline of elite athletics with the precision of cybersecurity and data analysis.
-                        </p>
-                        <p>
-                            As a Yale graduate and former NCAA All-American swimmer, I bring the same dedication to excellence that drove my athletic achievements into the world of technology. My experience spans financial services at UBS, equity research at Horizon Kinetics, and international business strategy in Shanghai.
-                        </p>
-                        <p>
-                            I'm passionate about leveraging technology to solve complex problems, whether it's developing cybersecurity protocols, analyzing financial data, or creating innovative solutions that bridge the gap between technical complexity and business value.
-                        </p>
-                    </div>
-                </div>
+                // Zone-specific elements
+                if (zoneName === 'landing') {
+                    // Welcome portal
+                    const ringGeometry = new THREE.TorusGeometry(5, 1, 8, 16);
+                    const ringMaterial = new THREE.MeshPhongMaterial({ 
+                        color: 0x00ff41,
+                        emissive: 0x001100
+                    });
+                    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+                    ring.position.set(0, 5, 0);
+                    ring.rotation.x = Math.PI / 2;
+                    group.add(ring);
 
-                <div class="about-highlights fade-in">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🎓</div>
-                        <h4>Yale Graduate</h4>
-                        <p>BA in Sociology & Public Health with focus on data analysis and research methodology</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🏆</div>
-                        <h4>NCAA All-American</h4>
-                        <p>Elite performance under pressure, time management, and team leadership</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">🛡️</div>
-                        <h4>Cybersecurity Expert</h4>
-                        <p>Threat intelligence, risk assessment, and enterprise security solutions</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">📊</div>
-                        <h4>Data Analyst</h4>
-                        <p>R, Python, SQL, Tableau for insights-driven decision making</p>
-                    </div>
-                </div>
-            </div>
+                    // Floating text elements
+                    for (let i = 0; i < 8; i++) {
+                        const textCube = new THREE.Mesh(
+                            new THREE.BoxGeometry(2, 2, 2),
+                            new THREE.MeshPhongMaterial({ color: 0x0091ff })
+                        );
+                        const angle = (i / 8) * Math.PI * 2;
+                        textCube.position.set(
+                            Math.cos(angle) * 15,
+                            3 + Math.sin(i) * 2,
+                            Math.sin(angle) * 15
+                        );
+                        textCube.userData = { type: 'info', info: 'Welcome to Kevin\'s Portfolio!' };
+                        group.add(textCube);
+                        interactiveObjects.push(textCube);
+                    }
+                }
 
-            <div class="personal-interests fade-in">
-                <h3>Beyond the Code</h3>
-                <p>When I'm not diving into cybersecurity protocols or analyzing data trends, you'll find me:</p>
-                <div class="interest-tags">
-                    <span class="interest-tag">🥾 Hiking mountain trails</span>
-                    <span class="interest-tag">📚 Reading tech industry insights</span>
-                    <span class="interest-tag">✍️ Creative writing projects</span>
-                    <span class="interest-tag">🎨 Digital design and illustration</span>
-                    <span class="interest-tag">🌟 Exploring emerging technologies</span>
-                    <span class="interest-tag">🏊‍♂️ Swimming and water sports</span>
-                </div>
-            </div>
-        </div>
-    </section>
+                if (zoneName === 'about') {
+                    // Personal timeline towers
+                    for (let i = 0; i < 4; i++) {
+                        const towerGeometry = new THREE.CylinderGeometry(1, 2, 8 + i * 2, 8);
+                        const towerMaterial = new THREE.MeshLambertMaterial({ color: zone.color });
+                        const tower = new THREE.Mesh(towerGeometry, towerMaterial);
+                        tower.position.set(
+                            zone.position.x + (i - 1.5) * 8,
+                            (8 + i * 2) / 2,
+                            zone.position.z + 10
+                        );
+                        tower.userData = { 
+                            type: 'about', 
+                            info: ['Yale Education', 'NCAA Athletics', 'Tech Career', 'Current Role'][i] 
+                        };
+                        group.add(tower);
+                        interactiveObjects.push(tower);
+                    }
+                }
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">
-                    A showcase of technical solutions and innovative approaches to real-world challenges
-                </p>
-            </div>
+                if (zoneName === 'experience') {
+                    // Career buildings
+                    const companies = ['Group1001', 'Horizon Kinetics', 'ConBio', 'UBS'];
+                    for (let i = 0; i < companies.length; i++) {
+                        const buildingGeometry = new THREE.BoxGeometry(6, 10 + i * 3, 6);
+                        const buildingMaterial = new THREE.MeshLambertMaterial({ color: zone.color });
+                        const building = new THREE.Mesh(buildingGeometry, buildingMaterial);
+                        building.position.set(
+                            zone.position.x + (i - 1.5) * 12,
+                            (10 + i * 3) / 2,
+                            zone.position.z
+                        );
+                        building.userData = { 
+                            type: 'experience', 
+                            company: companies[i] 
+                        };
+                        group.add(building);
+                        interactiveObjects.push(building);
+                    }
+                }
 
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">🛡️</div>
-                        <div class="project-title">
-                            <h3>Cybersecurity Risk Framework</h3>
-                            <p class="project-tech">Python • Risk Analysis • Security Protocols</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Developed comprehensive cybersecurity assessment framework for enterprise applications, implementing automated risk scoring and threat detection protocols.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Automated Risk Assessment</span>
-                        <span class="feature-tag">Threat Intelligence Integration</span>
-                        <span class="feature-tag">Real-time Monitoring</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('security-framework')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase detailed documentation</p>
-                    </div>
-                </div>
+                if (zoneName === 'projects') {
+                    // Project showcases
+                    const projects = ['Security Framework', 'Analytics Platform', 'Intranet Extension'];
+                    for (let i = 0; i < projects.length; i++) {
+                        const projectGeometry = new THREE.DodecahedronGeometry(4);
+                        const projectMaterial = new THREE.MeshPhongMaterial({ 
+                            color: zone.color,
+                            wireframe: false,
+                            transparent: true,
+                            opacity: 0.8
+                        });
+                        const project = new THREE.Mesh(projectGeometry, projectMaterial);
+                        const angle = (i / projects.length) * Math.PI * 2;
+                        project.position.set(
+                            zone.position.x + Math.cos(angle) * 15,
+                            6,
+                            zone.position.z + Math.sin(angle) * 15
+                        );
+                        project.userData = { 
+                            type: 'project', 
+                            name: projects[i] 
+                        };
+                        group.add(project);
+                        interactiveObjects.push(project);
+                    }
+                }
 
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">📊</div>
-                        <div class="project-title">
-                            <h3>Financial Data Analytics Platform</h3>
-                            <p class="project-tech">R • Python • Tableau • SQL</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Built comprehensive analytics platform for equity research, processing financial statements and earnings data to generate actionable investment insights.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Automated Data Processing</span>
-                        <span class="feature-tag">Interactive Dashboards</span>
-                        <span class="feature-tag">Predictive Modeling</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('analytics-platform')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase portfolio analysis tools</p>
-                    </div>
-                </div>
+                if (zoneName === 'skills') {
+                    // Skill trees
+                    const skillCategories = ['Cybersecurity', 'Data Analysis', 'Cloud Tech', 'Leadership'];
+                    for (let i = 0; i < skillCategories.length; i++) {
+                        const treeGroup = new THREE.Group();
+                        
+                        // Tree trunk
+                        const trunkGeometry = new THREE.CylinderGeometry(0.5, 1, 8);
+                        const trunkMaterial = new THREE.MeshLambertMaterial({ color: 0x8B4513 });
+                        const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
+                        trunk.position.y = 4;
+                        treeGroup.add(trunk);
 
-                <div class="project-card fade-in">
-                    <div class="project-header">
-                        <div class="project-icon">🌐</div>
-                        <div class="project-title">
-                            <h3>UBS Intranet Extension</h3>
-                            <p class="project-tech">JavaScript • UI/UX • Agile Development</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Led 7-person team to design and develop intranet extension for employee locker reservations, improving workplace efficiency and user experience.
-                    </p>
-                    <div class="project-features">
-                        <span class="feature-tag">Team Leadership</span>
-                        <span class="feature-tag">User-Centered Design</span>
-                        <span class="feature-tag">Agile Methodology</span>
-                    </div>
-                    <div class="project-upload">
-                        <button class="upload-btn" onclick="handleProjectUpload('intranet-extension')">
-                            📁 Upload Project Files
-                        </button>
-                        <p class="upload-status">Ready to showcase team collaboration project</p>
-                    </div>
-                </div>
+                        // Tree crown
+                        const crownGeometry = new THREE.SphereGeometry(4);
+                        const crownMaterial = new THREE.MeshLambertMaterial({ color: zone.color });
+                        const crown = new THREE.Mesh(crownGeometry, crownMaterial);
+                        crown.position.y = 10;
+                        crown.userData = { 
+                            type: 'skill', 
+                            category: skillCategories[i] 
+                        };
+                        treeGroup.add(crown);
+                        interactiveObjects.push(crown);
 
-                <div class="project-card fade-in new-project">
-                    <div class="project-header">
-                        <div class="project-icon">➕</div>
-                        <div class="project-title">
-                            <h3>Add New Project</h3>
-                            <p class="project-tech">Ready to showcase your latest work</p>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Upload and showcase your latest projects, technical achievements, or innovative solutions. Perfect for continuous portfolio updates.
-                    </p>
-                    <div class="project-upload">
-                        <button class="upload-btn primary" onclick="handleNewProject()">
-                            🚀 Create New Project
-                        </button>
-                        <p class="upload-status">Click to add your next breakthrough project</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        const angle = (i / skillCategories.length) * Math.PI * 2;
+                        treeGroup.position.set(
+                            zone.position.x + Math.cos(angle) * 15,
+                            0,
+                            zone.position.z + Math.sin(angle) * 15
+                        );
+                        
+                        group.add(treeGroup);
+                    }
+                }
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Professional Experience</h2>
-                <p class="section-subtitle">
-                    A progression through cybersecurity, financial technology, and data analysis roles at leading organizations
-                </p>
-            </div>
+                zoneObjects[zoneName] = group;
+                scene.add(group);
+            });
+        }
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">G1</div>
-                    <div class="timeline-content">
-                        <div class="company">Group1001</div>
-                        <h3 class="role">Security Engineer - Technology Rotational Program</h3>
-                        <div class="duration">Jan 2024 - Present</div>
-                        <ul class="achievements">
-                            <li>Developing comprehensive cybersecurity solutions across multiple business units in a structured rotational program</li>
-                            <li>Implementing security protocols and risk assessment frameworks for enterprise-level applications</li>
-                            <li>Collaborating with cross-functional teams to integrate security best practices into development workflows</li>
-                        </ul>
-                    </div>
-                </div>
+        // Add lighting
+        function addLights() {
+            // Ambient light
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">HK</div>
-                    <div class="timeline-content">
-                        <div class="company">Horizon Kinetics</div>
-                        <h3 class="role">Equity Research Intern</h3>
-                        <div class="duration">Sep 2023 - Dec 2023</div>
-                        <ul class="achievements">
-                            <li>Authored in-house documentation for INFL and BLOC investment portfolios through comprehensive equity research</li>
-                            <li>Analyzed financial statements (10-Q's, 10-K's, DEF 14As) and synthesized key insights from earnings meetings</li>
-                            <li>Built a comprehensive 'Research Library' on WordPress, creating 75+ optimized subpages for improved client experience</li>
-                        </ul>
-                    </div>
-                </div>
+            // Main directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(50, 50, 50);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.mapSize.width = 2048;
+            directionalLight.shadow.mapSize.height = 2048;
+            scene.add(directionalLight);
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">CB</div>
-                    <div class="timeline-content">
-                        <div class="company">ConBio (康奥科技)</div>
-                        <h3 class="role">Business Strategy and Technology Intern</h3>
-                        <div class="duration">Jun 2023 - Aug 2023 • Shanghai, China</div>
-                        <ul class="achievements">
-                            <li>Led website redesign initiative using Figma, creating wireframes that enhanced UX for global expansion strategy</li>
-                            <li>Adapted PowerPoint presentations for FDA approval, implementing U.S. corporate standards and presentation techniques</li>
-                            <li>Contributed to successful FDA approval and company's acquisition of Massachusetts manufacturing facility</li>
-                        </ul>
-                    </div>
-                </div>
+            // Zone-specific colored lights
+            Object.keys(zones).forEach(zoneName => {
+                const zone = zones[zoneName];
+                const light = new THREE.PointLight(zone.color, 0.5, 50);
+                light.position.set(zone.position.x, 15, zone.position.z);
+                scene.add(light);
+            });
+        }
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">UB</div>
-                    <div class="timeline-content">
-                        <div class="company">UBS Financial Services</div>
-                        <h3 class="role">Technology Intern - Cyber Threat Intelligence Team</h3>
-                        <div class="duration">Jun 2022 - Aug 2022</div>
-                        <ul class="achievements">
-                            <li>Developed division-specific cyber attack contingency plans for the CTI team, focusing on risk management and impact minimization</li>
-                            <li>Led a 7-person intern team using agile methodology to design an intranet extension for on-site locker reservations</li>
-                            <li>Gained deep expertise in cybercrime trends, threat analysis, and enterprise security protocols</li>
-                        </ul>
-                    </div>
-                </div>
+        // Add particle system
+        function addParticleSystem() {
+            const particleCount = 1000;
+            const particles = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">UB</div>
-                    <div class="timeline-content">
-                        <div class="company">UBS Financial Services</div>
-                        <h3 class="role">Technology Intern - WMA IT Team</h3>
-                        <div class="duration">Jun 2021 - Aug 2021</div>
-                        <ul class="achievements">
-                            <li>Managed Tableau dashboards tracking device issues across Wealth Management America division</li>
-                            <li>Delivered daily analytics reports identifying device trends and security anomalies</li>
-                            <li>Collaborated on COVID-19 Return-to-Office strategy using IoT sensors for occupancy monitoring</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 400;
+                positions[i + 1] = (Math.random() - 0.5) * 400;
+                positions[i + 2] = (Math.random() - 0.5) * 400;
+            }
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">
-                    A comprehensive toolkit spanning cybersecurity, data analysis, and modern development technologies
-                </p>
-            </div>
+            particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>
-                        <div class="skill-icon">🛡️</div>
-                        Cybersecurity
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Threat Intelligence</span>
-                        <span class="skill-tag">Risk Assessment</span>
-                        <span class="skill-tag">Security Protocols</span>
-                        <span class="skill-tag">Incident Response</span>
-                        <span class="skill-tag">Vulnerability Assessment</span>
-                        <span class="skill-tag">Network Security</span>
-                    </div>
-                </div>
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x00ff41,
+                size: 0.5,
+                transparent: true,
+                opacity: 0.6
+            });
 
-                <div class="skill-category fade-in">
-                    <h3>
-                        <div class="skill-icon">📊</div>
-                        Data Analysis
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">R Programming</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">Data Visualization</span>
-                    </div>
-                </div>
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+        }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">💼</div>
-                       Financial Technology
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Equity Research</span>
-                       <span class="skill-tag">Financial Modeling</span>
-                       <span class="skill-tag">Portfolio Analysis</span>
-                       <span class="skill-tag">Risk Management</span>
-                       <span class="skill-tag">Regulatory Compliance</span>
-                       <span class="skill-tag">Market Analysis</span>
-                   </div>
-               </div>
+        // Add starfield background
+        function addStarfield() {
+            const starCount = 2000;
+            const stars = new THREE.BufferGeometry();
+            const positions = new Float32Array(starCount * 3);
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🔧</div>
-                       Technical Tools
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Terraform</span>
-                       <span class="skill-tag">Zscaler</span>
-                       <span class="skill-tag">Neo4j</span>
-                       <span class="skill-tag">Cypher (Graph DB Query Language)</span>
-                       <span class="skill-tag">Microsoft Office Suite</span>
-                       <span class="skill-tag">Figma</span>
-                       <span class="skill-tag">WordPress</span>
-                       <span class="skill-tag">Git</span>
-                       <span class="skill-tag">Agile Methodology</span>
-                   </div>
-               </div>
+            for (let i = 0; i < starCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 2000;
+                positions[i + 1] = (Math.random() - 0.5) * 2000;
+                positions[i + 2] = (Math.random() - 0.5) * 2000;
+            }
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🌟</div>
-                       Leadership & Soft Skills
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Project Management</span>
-                       <span class="skill-tag">Team Leadership</span>
-                       <span class="skill-tag">Strategic Planning</span>
-                       <span class="skill-tag">Cross-cultural Communication</span>
-                       <span class="skill-tag">Problem Solving</span>
-                       <span class="skill-tag">Time Management</span>
-                   </div>
-               </div>
+            stars.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-               <div class="skill-category fade-in">
-                   <h3>
-                       <div class="skill-icon">🏆</div>
-                       Certifications
-                   </h3>
-                   <div class="skill-tags">
-                       <span class="skill-tag">IBM Python for Data Science</span>
-                       <span class="skill-tag">IBM AI & Development</span>
-                       <span class="skill-tag">IBM Databases and SQL</span>
-                       <span class="skill-tag">NCAA Scholar All-American</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1,
+                transparent: true,
+                opacity: 0.8
+            });
 
-   <!-- Education Section -->
-   <section id="education">
-       <div class="container">
-           <div class="section-header fade-in">
-               <h2 class="section-title">Education & Achievements</h2>
-               <p class="section-subtitle">
-                   Academic excellence combined with elite athletic performance and continuous professional development
-               </p>
-           </div>
+            const starField = new THREE.Points(stars, starMaterial);
+            scene.add(starField);
+        }
 
-           <div class="education-grid">
-               <div class="education-card fade-in">
-                   <div class="university">Yale University</div>
-                   <div class="degree">Bachelor of Arts - Sociology, Public Health</div>
-                   <div class="gpa">GPA: 3.55/4.0 • Graduated: August 2024</div>
-                   
-                   <div class="achievements-section">
-                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Relevant Coursework:</h4>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Introductory Statistics</span>
-                           <span class="skill-tag">Data Analysis & Exploration (R)</span>
-                           <span class="skill-tag">Microeconomics</span>
-                           <span class="skill-tag">Calculus</span>
-                       </div>
-                       
-                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Athletic Achievement:</h4>
-                       <span class="achievement-badge">Division I Varsity Swim & Dive Team</span>
-                       <span class="achievement-badge">5-Year Student-Athlete</span>
-                   </div>
-               </div>
+        // Mouse interaction functions
+        function onMouseMove(event) {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
 
-               <div class="education-card fade-in">
-                   <div class="university">University of Michigan</div>
-                   <div class="degree">Student-Athlete Program</div>
-                   <div class="gpa">September 2019 - April 2021</div>
-                   
-                   <div class="achievements-section">
-                       <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Elite Athletic Honors:</h4>
-                       <span class="achievement-badge">NCAA All-American</span>
-                       <span class="achievement-badge">NCAA Scholar All-American</span>
-                       
-                       <h4 style="margin: 1.5rem 0 1rem; color: var(--text-primary);">Key Skills Developed:</h4>
-                       <div class="skill-tags">
-                           <span class="skill-tag">Elite Performance Under Pressure</span>
-                           <span class="skill-tag">Advanced Time Management</span>
-                           <span class="skill-tag">Team Leadership</span>
-                           <span class="skill-tag">Goal-Oriented Mindset</span>
-                       </div>
-                   </div>
-               </div>
-           </div>
+        function onMouseClick(event) {
+            if (!isExploring) return;
+            
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(interactiveObjects);
 
-           <!-- Additional Interests Section -->
-           <div class="education-card fade-in" style="margin-top: 2rem;">
-               <div class="university">Personal Interests</div>
-               <div class="degree">Balanced Professional and Personal Development</div>
-               
-               <div class="achievements-section">
-                   <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Current Interests:</h4>
-                   <div class="skill-tags">
-                       <span class="skill-tag">Hiking & Outdoor Sports</span>
-                       <span class="skill-tag">Technical Reading</span>
-                       <span class="skill-tag">Creative Writing</span>
-                       <span class="skill-tag">Drawing & Design</span>
-                       <span class="skill-tag">Continuous Learning</span>
-                       <span class="skill-tag">Technology Trends</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section>
+            if (intersects.length > 0) {
+                const object = intersects[0].object;
+                handleObjectInteraction(object);
+            }
+        }
 
-   <!-- Contact Section -->
-   <section id="contact">
-       <div class="container">
-           <div class="contact fade-in">
-               <h2 class="section-title">Let's Connect</h2>
-               <p class="section-subtitle">
-                   Please feel free to reach out using the contact info below!
-               </p>
+        function handleObjectInteraction(object) {
+            const userData = object.userData;
+            
+            if (userData.zone) {
+                navigateToZone(userData.zone);
+            } else if (userData.type === 'info') {
+                alert(userData.info);
+            } else if (userData.type === 'about') {
+                alert(`About: ${userData.info} - Key milestone in Kevin's journey`);
+            } else if (userData.type === 'experience') {
+                alert(`Experience at ${userData.company} - Click zone navigation to learn more`);
+            } else if (userData.type === 'project') {
+                alert(`Project: ${userData.name} - Interactive showcase coming soon`);
+            } else if (userData.type === 'skill') {
+                alert(`Skill Category: ${userData.category} - Core competency area`);
+            }
+        }
 
-               <div class="contact-links">
-                   <a href="mailto:kevinm.bradley1@gmail.com" class="contact-link">
-                       <div class="contact-icon">✉️</div>
-                       <span>kevinm.bradley1@gmail.com</span>
-                   </a>
-                   <a href="https://www.linkedin.com/in/kevinmichaelbradley" class="contact-link" target="_blank" rel="noopener noreferrer">
-                       <div class="contact-icon">💼</div>
-                       <span>LinkedIn Profile</span>
-                   </a>
-                   <a href="tel:+12039393358" class="contact-link">
-                       <div class="contact-icon">📱</div>
-                       <span>(203) 939-3358</span>
-                   </a>
-                   <a href="#" class="contact-link" onclick="downloadResume()">
-                       <div class="contact-icon">📄</div>
-                       <span>Download Resume</span>
-                   </a>
-               </div>
+        // Zone navigation
+        function navigateToZone(zoneName) {
+            if (!zones[zoneName]) return;
 
-               <div style="margin-top: 3rem; padding: 2rem; background: var(--card-bg); border-radius: var(--border-radius); border: 1px solid var(--card-border); box-shadow: var(--shadow-sm);">
-                   <h4 style="margin-bottom: 1rem; color: var(--accent-blue); font-weight: 600; letter-spacing: -0.01em;">Currently Based In:</h4>
-                   <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 500;">📍 Norwalk, CT 06855</p>
-                   <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5;">Open to opportunities in the Greater New York area and remote positions</p>
-               </div>
-           </div>
-       </div>
-   </section>
+            currentZone = zoneName;
+            const zone = zones[zoneName];
 
-   <!-- Footer -->
-   <footer>
-       <div class="container">
-           <p>&copy; 2025 Kevin Bradley. Built with modern web technologies and deployed on GitHub Pages.</p>
-           <p style="margin-top: 0.5rem; font-size: 0.9rem;">Security Engineer | Data Analyst | Yale Graduate | NCAA All-American</p>
-       </div>
-   </footer>
+            // Update UI
+            document.querySelectorAll('.nav-zone').forEach(el => el.classList.remove('active'));
+            document.querySelector(`[data-zone="${zoneName}"]`).classList.add('active');
 
-   <script>
-       // Smooth scrolling for navigation
-       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-           anchor.addEventListener('click', function (e) {
-               e.preventDefault();
-               const target = document.querySelector(this.getAttribute('href'));
-               if (target) {
-                   target.scrollIntoView({
-                       behavior: 'smooth',
-                       block: 'start'
-                   });
-               }
-           });
-       });
+            // Update zone info
+            const zoneInfo = document.getElementById('zone-info');
+            zoneInfo.querySelector('.zone-title').textContent = zone.title;
+            zoneInfo.querySelector('.zone-description').textContent = zone.description;
+            
+            const detailsList = zoneInfo.querySelector('.zone-details');
+            detailsList.innerHTML = '';
+            zone.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                detailsList.appendChild(li);
+            });
 
-       // Navigation active state
-       function updateActiveNav() {
-           const sections = document.querySelectorAll('section[id]');
-           const navLinks = document.querySelectorAll('.nav-links a');
-           
-           let current = '';
-           sections.forEach(section => {
-               const sectionTop = section.getBoundingClientRect().top;
-               if (sectionTop <= 100) {
-                   current = section.getAttribute('id');
-               }
-           });
+            // Animate camera to zone
+            animateCameraToPosition(
+                zone.position.x,
+                zone.position.y + 15,
+                zone.position.z + 25
+            );
+        }
 
-           navLinks.forEach(link => {
-               link.classList.remove('active');
-               if (link.getAttribute('href') === `#${current}`) {
-                   link.classList.add('active');
-               }
-           });
-       }
+        function animateCameraToPosition(x, y, z) {
+            const startPos = camera.position.clone();
+            const endPos = new THREE.Vector3(x, y, z);
+            const duration = 2000;
+            const startTime = Date.now();
 
-       // Fade in animation on scroll
-       function animateOnScroll() {
-           const elements = document.querySelectorAll('.fade-in, .timeline-item');
-           
-           elements.forEach(element => {
-               const elementTop = element.getBoundingClientRect().top;
-               const elementVisible = 150;
-               
-               if (elementTop < window.innerHeight - elementVisible) {
-                   element.classList.add('visible');
-               }
-           });
-       }
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // Ease out cubic
 
-       // Navigation background on scroll
-       function updateNavBackground() {
-           const nav = document.querySelector('nav');
-           const scrolled = window.pageYOffset;
-           
-           if (scrolled > 100) {
-               nav.style.background = 'rgba(255, 255, 255, 0.08)';
-               nav.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-           } else {
-               nav.style.background = 'rgba(255, 255, 255, 0.05)';
-               nav.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-           }
-       }
+                camera.position.lerpVectors(startPos, endPos, eased);
 
-       // Parallax effect for background orbs
-       function updateParallax() {
-           const scrolled = window.pageYOffset;
-           const orbs = document.querySelectorAll('.gradient-orb');
-           
-           orbs.forEach((orb, index) => {
-               const speed = 0.5 + (index * 0.1);
-               orb.style.transform = `translateY(${scrolled * speed}px)`;
-           });
-       }
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
 
-       // Enhanced hover effects for cards
-       function initCardEffects() {
-           const cards = document.querySelectorAll('.timeline-content, .skill-category, .education-card');
-           
-           cards.forEach(card => {
-               card.addEventListener('mouseenter', function() {
-                   this.style.transform = 'translateY(-8px) scale(1.02)';
-                   this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
-               });
-               
-               card.addEventListener('mouseleave', function() {
-                   this.style.transform = 'translateY(0) scale(1)';
-                   this.style.boxShadow = 'none';
-               });
-           });
-       }
+            animate();
+        }
 
-       // Typewriter effect for hero subtitle
-       function typewriterEffect() {
-           const subtitle = document.querySelector('.hero-text .subtitle');
-           const text = subtitle.textContent;
-           subtitle.textContent = '';
-           
-           let i = 0;
-           function type() {
-               if (i < text.length) {
-                   subtitle.textContent += text.charAt(i);
-                   i++;
-                   setTimeout(type, 100);
-               }
-           }
-           
-           setTimeout(type, 1000);
-       }
+        // UI Functions
+        function enterPortfolio() {
+            document.getElementById('welcome-message').classList.add('hidden');
+            document.getElementById('navigation-ui').classList.add('visible');
+            document.getElementById('controls-help').classList.add('visible');
+            document.getElementById('zone-info').classList.add('visible');
+            isExploring = true;
+        }
 
-       // Resume download function
-       function downloadResume() {
-           // Since we can't host actual files on GitHub Pages in this context,
-           // this would typically link to a PDF hosted in your repository
-           alert('Resume download would be available when you upload your PDF resume to the GitHub repository and link it here.');
-       }
+        // Window resize handler
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
 
-       // Copy email to clipboard
-       function copyEmail() {
-           navigator.clipboard.writeText('kevinm.bradley1@gmail.com').then(() => {
-               const notification = document.createElement('div');
-               notification.textContent = 'Email copied to clipboard!';
-               notification.style.cssText = `
-                   position: fixed;
-                   top: 20px;
-                   right: 20px;
-                   background: var(--accent-gradient);
-                   color: white;
-                   padding: 1rem 2rem;
-                   border-radius: 10px;
-                   z-index: 10000;
-                   animation: slideIn 0.3s ease;
-               `;
-               document.body.appendChild(notification);
-               setTimeout(() => notification.remove(), 3000);
-           });
-       }
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
 
-       // Add click handler for email link
-       document.addEventListener('DOMContentLoaded', function() {
-           const emailLink = document.querySelector('a[href^="mailto"]');
-           emailLink.addEventListener('click', function(e) {
-               e.preventDefault();
-               copyEmail();
-               // Still open email client
-               setTimeout(() => window.location.href = this.href, 1000);
-           });
-       });
+            // Update controls
+            if (controls && controls.update) {
+                controls.update();
+            }
 
-       // Performance optimization: Throttle scroll events
-       function throttle(func, limit) {
-           let inThrottle;
-           return function() {
-               const args = arguments;
-               const context = this;
-               if (!inThrottle) {
-                   func.apply(context, args);
-                   inThrottle = true;
-                   setTimeout(() => inThrottle = false, limit);
-               }
-           }
-       }
+            // Rotate crystals
+            interactiveObjects.forEach(obj => {
+                if (obj.userData.type === 'crystal') {
+                    obj.rotation.y += 0.01;
+                    obj.position.y = 8 + Math.sin(Date.now() * 0.002) * 2;
+                }
+            });
 
-       // Enhanced loading animation
-       function initLoadingSequence() {
-           const elements = document.querySelectorAll('.hero-text > *:not(h1)');
-           elements.forEach((element, index) => {
-               element.style.opacity = '0';
-               element.style.transform = 'translateY(30px)';
-               element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
-               
-               setTimeout(() => {
-                   element.style.opacity = '1';
-                   element.style.transform = 'translateY(0)';
-               }, 300 + (index * 150));
-           });
-       }
+            // Render scene
+            renderer.render(scene, camera);
+        }
 
-       // Advanced intersection observer for better performance
-       function initIntersectionObserver() {
-           const options = {
-               threshold: 0.1,
-               rootMargin: '0px 0px -50px 0px'
-           };
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            // Hide loading screen
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 1000);
+            }, 2000);
 
-           const observer = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       entry.target.classList.add('visible');
-                   }
-               });
-           }, options);
-
-           document.querySelectorAll('.fade-in, .timeline-item').forEach(el => {
-               observer.observe(el);
-           });
-       }
-
-       // Enhanced keyboard navigation
-       function initKeyboardNavigation() {
-           document.addEventListener('keydown', function(e) {
-               if (e.key === 'Tab') {
-                   document.body.classList.add('keyboard-navigation');
-               }
-           });
-
-           document.addEventListener('mousedown', function() {
-               document.body.classList.remove('keyboard-navigation');
-           });
-       }
-
-       // Preloader animation
-       function initPreloader() {
-           const preloader = document.createElement('div');
-           preloader.innerHTML = `
-               <div style="
-                   position: fixed;
-                   top: 0;
-                   left: 0;
-                   width: 100%;
-                   height: 100%;
-                   background: var(--dark-bg);
-                   display: flex;
-                   align-items: center;
-                   justify-content: center;
-                   z-index: 10000;
-                   opacity: 1;
-                   transition: opacity 0.5s ease;
-               ">
-                   <div style="
-                       width: 50px;
-                       height: 50px;
-                       border: 3px solid rgba(255,255,255,0.1);
-                       border-top: 3px solid var(--accent-blue);
-                       border-radius: 50%;
-                       animation: spin 1s linear infinite;
-                   "></div>
-               </div>
-           `;
-           document.body.appendChild(preloader);
-
-           window.addEventListener('load', () => {
-               setTimeout(() => {
-                   preloader.style.opacity = '0';
-                   setTimeout(() => preloader.remove(), 500);
-               }, 800);
-           });
-       }
-
-       // Enhanced cursor trail effect (optional - can be disabled for performance)
-       function initCursorTrail() {
-           if (window.innerWidth > 768) { // Only on desktop
-               const cursor = document.createElement('div');
-               cursor.style.cssText = `
-                   position: fixed;
-                   width: 20px;
-                   height: 20px;
-                   background: var(--accent-gradient);
-                   border-radius: 50%;
-                   pointer-events: none;
-                   z-index: 9999;
-                   opacity: 0.7;
-                   transform: translate(-50%, -50%);
-                   transition: all 0.1s ease;
-                   mix-blend-mode: difference;
-               `;
-               document.body.appendChild(cursor);
-
-               document.addEventListener('mousemove', (e) => {
-                   cursor.style.left = e.clientX + 'px';
-                   cursor.style.top = e.clientY + 'px';
-               });
-
-               document.addEventListener('mousedown', () => {
-                   cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-               });
-
-               document.addEventListener('mouseup', () => {
-                   cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-               });
-           }
-       }
-
-       // Matrix Rain Effect
-       function initMatrixRain() {
-           const matrixContainer = document.getElementById('matrix-rain');
-           const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]()';
-           
-           function createMatrixColumn() {
-               const column = document.createElement('div');
-               column.className = 'matrix-column';
-               column.style.left = Math.random() * window.innerWidth + 'px';
-               column.style.animationDuration = (Math.random() * 3 + 2) + 's';
-               column.style.animationDelay = Math.random() * 2 + 's';
-               
-               let text = '';
-               for (let i = 0; i < Math.floor(Math.random() * 20 + 10); i++) {
-                   text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
-               }
-               column.innerHTML = text;
-               
-               matrixContainer.appendChild(column);
-               
-               setTimeout(() => {
-                   if (column.parentNode) {
-                       column.parentNode.removeChild(column);
-                   }
-               }, 5000);
-           }
-           
-           setInterval(createMatrixColumn, 200);
-       }
-       
-       // Project Upload Functions
-       function handleProjectUpload(projectId) {
-           const messages = {
-               'security-framework': 'Cybersecurity Risk Framework files would be uploaded here. This could include threat assessment reports, risk matrices, and implementation guides.',
-               'analytics-platform': 'Financial Analytics Platform documentation would be uploaded here. This could include data models, dashboard screenshots, and performance metrics.',
-               'intranet-extension': 'UBS Intranet Extension project files would be uploaded here. This could include UI mockups, technical specifications, and team collaboration artifacts.'
-           };
-           
-           alert(messages[projectId] || 'Project files would be uploaded to showcase your technical work and achievements.');
-       }
-       
-       function handleNewProject() {
-           const projectName = prompt('Enter your new project name:');
-           if (projectName) {
-               alert(`Great! "${projectName}" would be added to your portfolio. You could then upload documentation, code samples, screenshots, and detailed project descriptions.`);
-           }
-       }
-
-       // Initialize all functions
-       document.addEventListener('DOMContentLoaded', function() {
-           initPreloader();
-           initLoadingSequence();
-           initIntersectionObserver();
-           initKeyboardNavigation();
-           initMatrixRain();
-           // initCursorTrail(); // Uncomment for cursor trail effect
-           
-           setTimeout(() => {
-               animateOnScroll();
-               updateActiveNav();
-               updateNavBackground();
-               initCardEffects();
-               typewriterEffect();
-           }, 1000);
-       });
-
-       // Event listeners with throttling for better performance
-       window.addEventListener('scroll', throttle(function() {
-           animateOnScroll();
-           updateActiveNav();
-           updateNavBackground();
-           updateParallax();
-       }, 16)); // 60fps throttling
-
-       // Add CSS animation keyframes
-       const style = document.createElement('style');
-       style.textContent = `
-           @keyframes slideIn {
-               from { transform: translateX(100%); opacity: 0; }
-               to { transform: translateX(0); opacity: 1; }
-           }
-           
-           @keyframes spin {
-               from { transform: rotate(0deg); }
-               to { transform: rotate(360deg); }
-           }
-           
-           /* Keyboard navigation enhancement */
-           .keyboard-navigation *:focus-visible {
-               outline: 2px solid var(--accent-blue) !important;
-               outline-offset: 2px !important;
-           }
-       `;
-       document.head.appendChild(style);
-   </script>
+            // Initialize 3D world
+            init();
+        });
+    </script>
 </body>
 </html>
